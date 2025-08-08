@@ -1,38 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Tech Career Hub</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
   <link rel="icon" href="favicon.ico" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
 </head>
 <body>
+  <!-- Theme Toggle -->
+  <button id="toggle-theme">🌙</button>
+
+  <!-- Header -->
   <header>
     <h1>Tech Career Hub</h1>
     <p>Explore career paths in tech with roadmaps, salaries, and resources.</p>
-    <button id="toggle-theme">🌙</button>
   </header>
 
+  <!-- Homepage Role Grid -->
   <main id="home">
     <section class="role-grid" id="roleGrid">
-      <!-- Role cards will be inserted here -->
+      <!-- Cards injected by script.js -->
     </section>
   </main>
 
+  <!-- Role Detail Page -->
   <section id="roleDetail" class="hidden">
     <button id="backButton">⬅ Back</button>
     <h2 id="roleTitle"></h2>
     <p id="roleDesc"></p>
+
     <div class="tabs">
       <button class="tab" data-tab="roadmap">🛣️ Roadmap</button>
       <button class="tab" data-tab="salary">💰 Salary</button>
       <button class="tab" data-tab="growth">📈 Growth</button>
       <button class="tab" data-tab="resources">📚 Resources</button>
     </div>
+
     <div id="tabContent"></div>
   </section>
 
+  <!-- Scripts -->
   <script src="data.js"></script>
   <script src="script.js"></script>
 </body>

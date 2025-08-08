@@ -1,24 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tech Career Hub</title>
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="favicon.ico" />
 </head>
 <body>
   <header>
     <h1>Tech Career Hub</h1>
-    <p>Explore tech career roadmaps</p>
+    <p>Explore career paths in tech with roadmaps, salaries, and resources.</p>
+    <button id="toggle-theme">🌙</button>
   </header>
 
-  <nav id="role-buttons">
-    <!-- JS will fill buttons dynamically -->
-  </nav>
-
-  <main id="role-details">
-    <!-- JS will fill role info -->
+  <main id="home">
+    <section class="role-grid" id="roleGrid">
+      <!-- Role cards will be inserted here -->
+    </section>
   </main>
+
+  <section id="roleDetail" class="hidden">
+    <button id="backButton">⬅ Back</button>
+    <h2 id="roleTitle"></h2>
+    <p id="roleDesc"></p>
+    <div class="tabs">
+      <button class="tab" data-tab="roadmap">🛣️ Roadmap</button>
+      <button class="tab" data-tab="salary">💰 Salary</button>
+      <button class="tab" data-tab="growth">📈 Growth</button>
+      <button class="tab" data-tab="resources">📚 Resources</button>
+    </div>
+    <div id="tabContent"></div>
+  </section>
 
   <script src="data.js"></script>
   <script src="script.js"></script>

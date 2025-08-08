@@ -1,36 +1,48 @@
-const buttonsDiv = document.getElementById("role-buttons");
-const detailsDiv = document.getElementById("role-details");
+const roleGrid = document.getElementById('roleGrid');
+const roleDetail = document.getElementById('roleDetail');
+const roleTitle = document.getElementById('roleTitle');
+const roleDesc = document.getElementById('roleDesc');
+const tabContent = document.getElementById('tabContent');
+const backButton = document.getElementById('backButton');
 
-Object.entries(roles).forEach(([key, role]) => {
-  const btn = document.createElement("button");
-  btn.textContent = role.title;
-  btn.onclick = () => showRole(key);
-  buttonsDiv.appendChild(btn);
+Object.entries(techRoles).forEach(([key, role]) => {
+  const card = document.createElement('div');
+  card.className = 'role-card';
+  card.innerHTML = `<h3>${role.title}</h3><p>${role.description}</p>`;
+  card.onclick = () => showRole(key);
+  roleGrid.appendChild(card);
 });
 
 function showRole(key) {
-  const role = roles[key];
-  detailsDiv.innerHTML = `
-    <h2>${role.title}</h2>
-    <p>${role.description}</p>
-    <p><strong>Salary (India):</strong> ${role.salary.india}</p>
-    <p><strong>Job Security:</strong> ${role.jobSecurity}</p>
-    <p><strong>Growth:</strong> ${role.growth}</p>
+  const role = techRoles[key];
+  roleTitle.textContent = role.title;
+  roleDesc.textContent = role.description;
+  showTab('roadmap', role);
+  document.getElementById('home').classList.add('hidden');
+  roleDetail.classList.remove('hidden');
 
-    <h3>Roadmap</h3>
-    ${role.roadmap.map(r => `
-      <div class="roadmap-phase">
-        <strong>${r.phase}</strong>
-        <ul>${r.skills.map(s => `<li>${s}</li>`).join('')}</ul>
-      </div>
-    `).join('')}
-
-    <h3>Resources</h3>
-    <ul>
-      ${role.resources.map(res => `<li><a href="${res.url}" target="_blank">${res.name}</a></li>`).join('')}
-    </ul>
-  `;
+  document.querySelectorAll('.tab').forEach(btn => {
+    btn.onclick = () => showTab(btn.dataset.tab, role);
+  });
 }
 
-// Load first role by default
-showRole('fullstack');
+function showTab(tab, role) {
+  if (tab === 'roadmap') {
+    tabContent.innerHTML = `<ul>${role.roadmap.map(item => `<li>${item}</li>`).join('')}</ul>`;
+  } else if (tab === 'salary') {
+    tabContent.innerHTML = `<p><strong>Salary:</strong> ${role.salary}</p>`;
+  } else if (tab === 'growth') {
+    tabContent.innerHTML = `<p><strong>Growth:</strong> ${role.growth}</p>`;
+  } else if (tab === 'resources') {
+    tabContent.innerHTML = `<ul>${role.resources.map(r => `<li><a href="${r.url}" target="_blank">${r.name}</a></li>`).join('')}</ul>`;
+  }
+}
+
+backButton.onclick = () => {
+  roleDetail.classList.add('hidden');
+  document.getElementById('home').classList.remove('hidden');
+};
+
+document.getElementById('toggle-theme').onclick = () => {
+  document.body.classList.toggle('dark');
+};

@@ -1,70 +1,52 @@
-const roles = {
+const techRoles = {
   fullstack: {
     title: "Full Stack Developer",
-    description: "Build complete web applications from frontend to backend",
-    salary: {
-      india: "₹4-25 LPA",
-      abroad: "$60K-150K",
-      remote: "$40K-120K"
-    },
-    jobSecurity: "High",
+    description: "Build web applications from frontend to backend",
+    salary: "₹4-25 LPA (India), $60K-150K (Abroad)",
     growth: "Excellent",
     roadmap: [
-      {
-        phase: "Foundation",
-        skills: ["HTML/CSS", "JavaScript", "Git/GitHub", "Responsive Design"]
-      },
-      {
-        phase: "Frontend Framework",
-        skills: ["React/Vue", "State Management", "Build Tools"]
-      },
-      {
-        phase: "Backend Development",
-        skills: ["Node.js/Python", "Databases", "APIs"]
-      },
-      {
-        phase: "Advanced & DevOps",
-        skills: ["Docker", "AWS", "CI/CD"]
-      }
+      "HTML, CSS, JS",
+      "React / Angular / Vue",
+      "Node.js / Express",
+      "Databases, APIs",
+      "DevOps basics (Docker, CI/CD)"
     ],
     resources: [
       { name: "FreeCodeCamp", url: "https://freecodecamp.org" },
       { name: "The Odin Project", url: "https://theodinproject.com" }
     ]
   },
-
   ml: {
     title: "Machine Learning Engineer",
-    description: "Develop and deploy ML models to solve real-world problems",
-    salary: {
-      india: "₹8-35 LPA",
-      abroad: "$90K-200K",
-      remote: "$70K-180K"
-    },
-    jobSecurity: "Very High",
+    description: "Train and deploy ML models",
+    salary: "₹8-35 LPA (India), $90K-200K (Abroad)",
     growth: "Exceptional",
     roadmap: [
-      {
-        phase: "Maths & Python",
-        skills: ["Python", "Statistics", "NumPy", "Pandas"]
-      },
-      {
-        phase: "Core ML",
-        skills: ["Scikit-learn", "Supervised Learning", "Evaluation"]
-      },
-      {
-        phase: "Deep Learning",
-        skills: ["TensorFlow", "CNN", "RNN"]
-      },
-      {
-        phase: "MLOps",
-        skills: ["Docker", "MLflow", "Cloud Platforms"]
-      }
+      "Python & Math Basics",
+      "Supervised & Unsupervised Learning",
+      "Deep Learning (CNN, RNN)",
+      "ML Deployment, MLOps"
     ],
     resources: [
       { name: "Kaggle Learn", url: "https://kaggle.com/learn" },
       { name: "Fast.ai", url: "https://fast.ai" }
     ]
+  },
+  frontend: {
+    title: "Frontend Developer",
+    description: "Build interactive user interfaces",
+    salary: "₹4-20 LPA (India), $60K-130K (Abroad)",
+    growth: "Very Good",
+    roadmap: [
+      "HTML, CSS, JS",
+      "React / Vue",
+      "State Management",
+      "APIs and Webpack"
+    ],
+    resources: [
+      { name: "MDN Web Docs", url: "https://developer.mozilla.org" },
+      { name: "Frontend Mentor", url: "https://frontendmentor.io" }
+    ]
   }
-  // Add more roles as needed
+  // Add more roles similarly...
 };

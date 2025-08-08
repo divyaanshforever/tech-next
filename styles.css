@@ -1,96 +1,113 @@
+/* style.css — v2.5 Enhanced UI */
+
 :root {
-  --bg: #ffffff;
+  --bg: #f5f7fa;
   --text: #1e1e1e;
   --accent: #5b21b6;
-  --card: #f1f5f9;
+  --card-bg: rgba(255, 255, 255, 0.15);
+  --blur: 20px;
 }
 
 body.dark {
-  --bg: #121212;
-  --text: #f5f5f5;
+  --bg: #0f0f1a;
+  --text: #f0f0f0;
   --accent: #818cf8;
-  --card: #1e1e2f;
+  --card-bg: rgba(30, 30, 30, 0.25);
 }
 
 body {
-  background-color: var(--bg);
-  color: var(--text);
   margin: 0;
-  font-family: 'Segoe UI', sans-serif;
-  transition: background-color 0.3s, color 0.3s;
+  font-family: 'Inter', 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg, #dfe9f3, #f0f4f8);
+  background-attachment: fixed;
+  background-size: 400% 400%;
+  animation: bgShift 15s ease infinite;
+  color: var(--text);
+  transition: background 0.5s, color 0.5s;
+}
+
+@keyframes bgShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 header {
   text-align: center;
   padding: 2rem 1rem;
-  background: var(--card);
+  background: transparent;
 }
 
 #toggle-theme {
-  position: absolute;
+  position: fixed;
   top: 1rem;
   right: 1rem;
   background: var(--accent);
-  border: none;
   color: white;
+  border: none;
   padding: 0.5rem;
-  border-radius: 5px;
+  border-radius: 6px;
   cursor: pointer;
 }
 
 .role-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1rem;
-  padding: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  padding: 2rem;
+  max-width: 1200px;
+  margin: auto;
 }
 
 .role-card {
-  background: var(--card);
-  border-radius: 10px;
-  padding: 1rem;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  background: var(--card-bg);
+  backdrop-filter: blur(var(--blur));
+  border-radius: 1rem;
+  padding: 1.5rem;
   text-align: center;
+  border: 1px solid rgba(255,255,255,0.1);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+  transition: all 0.3s ease;
   cursor: pointer;
-  transition: transform 0.2s;
 }
 
 .role-card:hover {
-  transform: translateY(-5px);
-}
-
-#roleDetail {
-  max-width: 900px;
-  margin: auto;
-  padding: 2rem;
-}
-
-.hidden {
-  display: none;
+  transform: translateY(-5px) scale(1.03);
+  border-color: var(--accent);
 }
 
 .tabs {
   display: flex;
-  gap: 1rem;
-  margin: 1rem 0;
   flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1rem;
 }
 
 .tab {
-  padding: 0.5rem 1rem;
   background: var(--accent);
   color: white;
   border: none;
-  border-radius: 5px;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
   cursor: pointer;
+  transition: background 0.3s ease;
 }
 
-.tab:hover {
+.tab:hover, .tab.active {
   background: #4338ca;
 }
 
 #tabContent {
-  background: var(--card);
-  padding: 1rem;
-  border-radius: 8px;
+  margin-top: 1rem;
+  animation: fadeIn 0.5s ease;
+  background: var(--card-bg);
+  padding: 1.5rem;
+  border-radius: 1rem;
+  backdrop-filter: blur(var(--blur));
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
 }

@@ -15,7 +15,6 @@ function applyTheme(mode) {
   localStorage.setItem('theme', mode);
 }
 
-// Init theme from storage or system preference
 const savedTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
 applyTheme(savedTheme);
 
@@ -28,7 +27,10 @@ toggleTheme.onclick = () => {
 Object.entries(techRoles).forEach(([key, role]) => {
   const card = document.createElement('div');
   card.className = 'role-card';
-  card.innerHTML = `<h3>${role.title}</h3><p>${role.description}</p>`;
+  card.innerHTML = `
+    <h3>${role.title}</h3>
+    <p>${role.description}</p>
+  `;
   card.onclick = () => showRole(key);
   roleGrid.appendChild(card);
 });
@@ -39,6 +41,7 @@ function showRole(key) {
   roleTitle.textContent = role.title;
   roleDesc.textContent = role.description;
   showTab('roadmap', role);
+
   document.getElementById('home').classList.add('hidden');
   roleDetail.classList.remove('hidden');
 
@@ -51,22 +54,37 @@ function showRole(key) {
     };
   });
   document.querySelector('.tab[data-tab="roadmap"]').classList.add('active');
+
+  // Optional illustration
+  if (role.illustration) {
+    const illu = document.createElement('img');
+    illu.src = role.illustration;
+    illu.alt = `${role.title} illustration`;
+    illu.style = 'max-width:100%; margin: 1rem 0; border-radius: 12px;';
+    tabContent.parentElement.insertBefore(illu, tabContent);
+  }
 }
 
 // --- TABS ---
 function showTab(tab, role) {
   tabContent.classList.remove('fade-in');
-  void tabContent.offsetWidth; // reset animation
+  void tabContent.offsetWidth;
   tabContent.classList.add('fade-in');
 
   if (tab === 'roadmap') {
-    tabContent.innerHTML = `<ul>${role.roadmap.map(item => `<li>${item}</li>`).join('')}</ul>`;
+    tabContent.innerHTML = `
+      <ol>${role.roadmap.map(item => `<li>${item}</li>`).join('')}</ol>
+    `;
   } else if (tab === 'salary') {
     tabContent.innerHTML = `<p><strong>Salary:</strong> ${role.salary}</p>`;
   } else if (tab === 'growth') {
     tabContent.innerHTML = `<p><strong>Growth:</strong> ${role.growth}</p>`;
   } else if (tab === 'resources') {
-    tabContent.innerHTML = `<ul>${role.resources.map(r => `<li><a href="${r.url}" target="_blank">${r.name}</a></li>`).join('')}</ul>`;
+    tabContent.innerHTML = `
+      <ul>
+        ${role.resources.map(r => `<li><a href="${r.url}" target="_blank">${r.name}</a></li>`).join('')}
+      </ul>
+    `;
   }
 }
 

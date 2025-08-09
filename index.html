@@ -3,317 +3,405 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tech Next - Advanced Career Platform</title>
-    <meta name="description" content="Discover your path in technology with detailed roadmaps, career timelines, salary insights, and premium learning resources.">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="styles.css">
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚀</text></svg>">
-</head>
-<body data-theme="light">
-    <!-- Background Elements -->
-    <div class="floating-bg"></div>
-    <div class="floating-bg bg-2"></div>
-    <div class="floating-bg bg-3"></div>
+    <meta name="description" content="Discover your path in technology with curated roadmaps, salary insights, and premium learning resources.">
+    <meta name="keywords" content="tech careers, programming, software development, career guidance, tech roadmap">
+    <meta name="author" content="Tech Career Hub">
     
-    <!-- Header -->
-    <header class="header">
-        <nav class="nav">
-            <div class="nav-brand">
-                <i class="fas fa-rocket brand-icon"></i>
-                <span class="brand-text">Tech Next</span>
-                <span class="version-badge">v4.0</span>
-            </div>
-            <div class="nav-controls">
-                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
-                    <i class="fas fa-moon"></i>
-                </button>
-                <button class="nav-menu-toggle" id="navMenuToggle" aria-label="Toggle menu">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
-            </div>
-            <div class="nav-menu" id="navMenu">
-                <a href="#careers" class="nav-link">Careers</a>
-                <a href="#roadmaps" class="nav-link">Roadmaps</a>
-                <a href="#compare" class="nav-link">Compare</a>
-                <a href="#assessment" class="nav-link">Assessment</a>
-                <a href="#resources" class="nav-link">Resources</a>
-            </div>
-        </nav>
-    </header>
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Tech Career Hub - Your Gateway to Tech Careers">
+    <meta property="og:description" content="Discover your path in technology with curated roadmaps, salary insights, and premium learning resources.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://divyaanshforever.github.io/tech-next">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Tech Career Hub">
+    <meta name="twitter:description" content="Discover your path in technology with curated roadmaps, salary insights, and premium learning resources.">
+    
+    <title>Tech Career Hub - Your Gateway to Tech Careers</title>
+    
+    <!-- Preload critical resources -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" as="style">
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style">
+    
+    <!-- External Stylesheets -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    
+    <!-- Local Stylesheets -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💻</text></svg>">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loadingScreen" class="loading-screen" aria-hidden="true">
+        <div class="loading-content">
+            <div class="loading-spinner"></div>
+            <p>Loading your tech future...</p>
+        </div>
+    </div>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <h1 class="hero-title">
-                    Discover Your <span class="gradient-text">Tech Career</span> Path
+    <!-- Navigation -->
+    <nav class="navbar" role="navigation" aria-label="Main navigation">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <h1 class="brand-text">
+                    <i class="fas fa-rocket" aria-hidden="true"></i>
+                    Tech<span class="brand-accent">Next</span>
                 </h1>
-                <p class="hero-subtitle">
-                    Navigate your journey in technology with detailed roadmaps, career timelines, 
-                    market insights, and curated learning resources from industry experts.
-                </p>
+            </div>
+            
+            <div class="nav-controls">
+                <!-- Search Toggle -->
+                <button 
+                    id="searchToggle" 
+                    class="nav-btn" 
+                    aria-label="Toggle search"
+                    aria-expanded="false"
+                    aria-controls="searchContainer"
+                >
+                    <i class="fas fa-search" aria-hidden="true"></i>
+                </button>
+                
+                <!-- Theme Toggle -->
+                <button 
+                    id="themeToggle" 
+                    class="nav-btn theme-toggle" 
+                    aria-label="Toggle theme"
+                    aria-pressed="false"
+                >
+                    <i class="fas fa-moon theme-icon" aria-hidden="true"></i>
+                </button>
+                
+                <!-- Mobile Menu Toggle -->
+                <button 
+                    id="mobileMenuToggle" 
+                    class="nav-btn mobile-menu-toggle" 
+                    aria-label="Toggle mobile menu"
+                    aria-expanded="false"
+                    aria-controls="mobileMenu"
+                >
+                    <i class="fas fa-bars" aria-hidden="true"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="mobile-menu" role="menu">
+            <a href="#hero" class="mobile-menu-item" role="menuitem">Home</a>
+            <a href="#careers" class="mobile-menu-item" role="menuitem">Careers</a>
+            <a href="#about" class="mobile-menu-item" role="menuitem">About</a>
+            <a href="#contact" class="mobile-menu-item" role="menuitem">Contact</a>
+        </div>
+
+        <!-- Search Container -->
+        <div id="searchContainer" class="search-container" role="search">
+            <div class="search-wrapper">
+                <input 
+                    type="text" 
+                    id="searchInput" 
+                    class="search-input" 
+                    placeholder="Search careers, skills, or technologies..."
+                    aria-label="Search careers"
+                    autocomplete="off"
+                >
+                <button 
+                    id="searchClear" 
+                    class="search-clear" 
+                    aria-label="Clear search"
+                    style="display: none;"
+                >
+                    <i class="fas fa-times" aria-hidden="true"></i>
+                </button>
+            </div>
+            <div id="searchResults" class="search-results" role="listbox" aria-label="Search results"></div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section id="hero" class="hero" role="banner">
+            <div class="hero-background">
+                <div class="floating-element floating-1"></div>
+                <div class="floating-element floating-2"></div>
+                <div class="floating-element floating-3"></div>
+            </div>
+            
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h2 class="hero-title">
+                        Discover Your <span class="gradient-text">Tech Future</span>
+                    </h2>
+                    <p class="hero-description">
+                        Navigate the ever-evolving world of technology with curated career paths, 
+                        real-time market insights, and expert-recommended learning resources.
+                    </p>
+                    <div class="hero-stats">
+                        <div class="stat-item">
+                            <span class="stat-number">12+</span>
+                            <span class="stat-label">Career Paths</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">50+</span>
+                            <span class="stat-label">Resources</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">100%</span>
+                            <span class="stat-label">Free</span>
+                        </div>
+                    </div>
+                </div>
+                
                 <div class="hero-actions">
-                    <button class="btn btn-primary" onclick="scrollToSection('careers')">
-                        <i class="fas fa-compass"></i>
+                    <button class="cta-button primary" onclick="scrollToSection('careers')">
+                        <i class="fas fa-rocket" aria-hidden="true"></i>
                         Explore Careers
                     </button>
-                    <button class="btn btn-secondary" onclick="openAssessment()">
-                        <i class="fas fa-brain"></i>
-                        Take Assessment
+                    <button class="cta-button secondary" onclick="openModal('about')">
+                        <i class="fas fa-info-circle" aria-hidden="true"></i>
+                        Learn More
                     </button>
                 </div>
-                <div class="hero-stats">
-                    <div class="stat">
-                        <span class="stat-number">15+</span>
-                        <span class="stat-label">Career Paths</span>
-                    </div>
-                    <div class="stat">
-                        <span class="stat-number">50+</span>
-                        <span class="stat-label">Detailed Roadmaps</span>
-                    </div>
-                    <div class="stat">
-                        <span class="stat-number">500+</span>
-                        <span class="stat-label">Learning Resources</span>
-                    </div>
-                </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Features Section -->
-    <section class="features">
-        <div class="container">
-            <h2 class="section-title">Why Choose Tech Next?</h2>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-route"></i>
-                    </div>
-                    <h3>Detailed Roadmaps</h3>
-                    <p>Step-by-step learning paths with timelines and milestones</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-chart-line"></i>
-                    </div>
-                    <h3>Market Insights</h3>
-                    <p>Real-time salary data and industry growth projections</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-graduation-cap"></i>
-                    </div>
-                    <h3>Curated Learning</h3>
-                    <p>Premium resources from top educators and platforms</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-balance-scale"></i>
-                    </div>
-                    <h3>Career Comparison</h3>
-                    <p>Compare different paths side-by-side</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-brain"></i>
-                    </div>
-                    <h3>Skill Assessment</h3>
-                    <p>Evaluate your current skills and get personalized recommendations</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-users"></i>
-                    </div>
-                    <h3>Community Support</h3>
-                    <p>Connect with peers and mentors in your field</p>
-                </div>
+        <!-- Career Paths Section -->
+        <section id="careers" class="careers-section">
+            <div class="section-header">
+                <h3 class="section-title">Choose Your Tech Journey</h3>
+                <p class="section-description">
+                    Explore comprehensive career paths with detailed roadmaps, salary insights, and curated resources.
+                </p>
             </div>
-        </div>
-    </section>
 
-    <!-- Search Section -->
-    <section class="search-section" id="careers">
-        <div class="container">
-            <div class="search-header">
-                <h2 class="section-title">Explore Tech Careers</h2>
-                <div class="search-container">
-                    <div class="search-box">
-                        <i class="fas fa-search search-icon"></i>
-                        <input 
-                            type="text" 
-                            id="searchInput" 
-                            placeholder="Search careers, skills, or technologies..."
-                            autocomplete="off"
-                        >
-                        <button class="search-clear" id="searchClear">
-                            <i class="fas fa-times"></i>
-                        </button>
-                    </div>
-                    <div class="search-filters">
-                        <button class="filter-btn active" data-filter="all">All</button>
-                        <button class="filter-btn" data-filter="development">Development</button>
-                        <button class="filter-btn" data-filter="design">Design</button>
-                        <button class="filter-btn" data-filter="data">Data & AI</button>
-                        <button class="filter-btn" data-filter="infrastructure">Infrastructure</button>
-                        <button class="filter-btn" data-filter="security">Security</button>
-                        <button class="filter-btn" data-filter="emerging">Emerging</button>
-                    </div>
-                </div>
-            </div>
-            <div class="careers-grid" id="careersGrid">
-                <!-- Career cards will be populated by JavaScript -->
-            </div>
-        </div>
-    </section>
-
-    <!-- Career Comparison Section -->
-    <section class="comparison-section" id="compare">
-        <div class="container">
-            <h2 class="section-title">Compare Career Paths</h2>
-            <div class="comparison-container">
-                <div class="comparison-selectors">
-                    <div class="selector-group">
-                        <label for="career1">Career Path 1:</label>
-                        <select id="career1" class="career-select">
-                            <option value="">Select a career...</option>
-                        </select>
-                    </div>
-                    <div class="vs-divider">VS</div>
-                    <div class="selector-group">
-                        <label for="career2">Career Path 2:</label>
-                        <select id="career2" class="career-select">
-                            <option value="">Select a career...</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="comparison-results" id="comparisonResults">
-                    <!-- Comparison results will be populated by JavaScript -->
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Skill Assessment Section -->
-    <section class="assessment-section" id="assessment">
-        <div class="container">
-            <h2 class="section-title">Skill Assessment</h2>
-            <div class="assessment-container">
-                <div class="assessment-intro">
-                    <h3>Discover Your Ideal Tech Career</h3>
-                    <p>Take our comprehensive assessment to get personalized career recommendations based on your skills, interests, and goals.</p>
-                    <button class="btn btn-primary" onclick="startAssessment()">
-                        <i class="fas fa-play"></i>
-                        Start Assessment
-                    </button>
-                </div>
-                <div class="assessment-quiz" id="assessmentQuiz" style="display: none;">
-                    <!-- Assessment questions will be populated by JavaScript -->
-                </div>
-                <div class="assessment-results" id="assessmentResults" style="display: none;">
-                    <!-- Assessment results will be populated by JavaScript -->
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Resources Section -->
-    <section class="resources-section" id="resources">
-        <div class="container">
-            <h2 class="section-title">Learning Resources</h2>
-            <div class="resources-tabs">
-                <button class="tab-btn active" data-tab="courses">Courses</button>
-                <button class="tab-btn" data-tab="books">Books</button>
-                <button class="tab-btn" data-tab="tools">Tools</button>
-                <button class="tab-btn" data-tab="communities">Communities</button>
-            </div>
-            <div class="resources-content" id="resourcesContent">
-                <!-- Resources will be populated by JavaScript -->
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <div class="footer-brand">
-                        <i class="fas fa-rocket"></i>
-                        <span>Tech Next</span>
-                    </div>
-                    <p>Empowering your journey in technology with comprehensive career guidance and learning resources.</p>
-                    <div class="social-links">
-                        <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
-                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                        <a href="#" aria-label="Discord"><i class="fab fa-discord"></i></a>
-                    </div>
-                </div>
-                <div class="footer-section">
-                    <h4>Careers</h4>
-                    <ul>
-                        <li><a href="#">Full Stack Development</a></li>
-                        <li><a href="#">Data Science</a></li>
-                        <li><a href="#">Machine Learning</a></li>
-                        <li><a href="#">Cybersecurity</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>Resources</h4>
-                    <ul>
-                        <li><a href="#">Learning Paths</a></li>
-                        <li><a href="#">Skill Assessment</a></li>
-                        <li><a href="#">Career Comparison</a></li>
-                        <li><a href="#">Salary Guide</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>Support</h4>
-                    <ul>
-                        <li><a href="#">Documentation</a></li>
-                        <li><a href="#">FAQ</a></li>
-                        <li><a href="#">Contact</a></li>
-                        <li><a href="#">Feedback</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 Tech Next. Built with ❤️ for the tech community.</p>
-                <div class="footer-links">
-                    <a href="#">Privacy Policy</a>
-                    <a href="#">Terms of Service</a>
-                    <a href="#">Cookie Policy</a>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Modal Container -->
-    <div class="modal-overlay" id="modalOverlay">
-        <div class="modal" id="careerModal">
-            <div class="modal-header">
-                <h2 class="modal-title" id="modalTitle"></h2>
-                <button class="modal-close" onclick="closeModal()">
-                    <i class="fas fa-times"></i>
+            <!-- Filter Controls -->
+            <div class="filter-controls" role="tablist" aria-label="Career categories">
+                <button class="filter-btn active" data-filter="all" role="tab" aria-selected="true">
+                    <i class="fas fa-th-large" aria-hidden="true"></i>
+                    All Careers
+                </button>
+                <button class="filter-btn" data-filter="development" role="tab" aria-selected="false">
+                    <i class="fas fa-code" aria-hidden="true"></i>
+                    Development
+                </button>
+                <button class="filter-btn" data-filter="design" role="tab" aria-selected="false">
+                    <i class="fas fa-palette" aria-hidden="true"></i>
+                    Design
+                </button>
+                <button class="filter-btn" data-filter="data" role="tab" aria-selected="false">
+                    <i class="fas fa-chart-bar" aria-hidden="true"></i>
+                    Data & AI
+                </button>
+                <button class="filter-btn" data-filter="infrastructure" role="tab" aria-selected="false">
+                    <i class="fas fa-server" aria-hidden="true"></i>
+                    Infrastructure
                 </button>
             </div>
-            <div class="modal-body" id="modalBody">
-                <!-- Modal content will be populated by JavaScript -->
+
+            <!-- Career Grid -->
+            <div id="careerGrid" class="career-grid" role="grid" aria-label="Career paths">
+                <!-- Career cards will be dynamically generated -->
+            </div>
+
+            <!-- Empty State -->
+            <div id="emptyState" class="empty-state" style="display: none;">
+                <i class="fas fa-search" aria-hidden="true"></i>
+                <h4>No careers found</h4>
+                <p>Try adjusting your search or filter criteria.</p>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="about-section">
+            <div class="about-content">
+                <div class="about-text">
+                    <h3 class="section-title">Why Choose TechNext?</h3>
+                    <p class="section-description">
+                        We provide comprehensive, up-to-date information to help you make informed decisions about your tech career.
+                    </p>
+                    
+                    <div class="features-grid">
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-route" aria-hidden="true"></i>
+                            </div>
+                            <div class="feature-content">
+                                <h4>Curated Roadmaps</h4>
+                                <p>Step-by-step learning paths designed by industry experts.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-chart-line" aria-hidden="true"></i>
+                            </div>
+                            <div class="feature-content">
+                                <h4>Market Insights</h4>
+                                <p>Real-time salary data and growth projections.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-book-open" aria-hidden="true"></i>
+                            </div>
+                            <div class="feature-content">
+                                <h4>Premium Resources</h4>
+                                <p>Hand-picked learning materials from top platforms.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-mobile-alt" aria-hidden="true"></i>
+                            </div>
+                            <div class="feature-content">
+                                <h4>Mobile Optimized</h4>
+                                <p>Access your career guidance on any device, anywhere.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Career Detail Modal -->
+    <div id="careerModal" class="modal" role="dialog" aria-labelledby="modalTitle" aria-hidden="true">
+        <div class="modal-overlay" aria-hidden="true"></div>
+        <div class="modal-container" role="document">
+            <div class="modal-header">
+                <h4 id="modalTitle" class="modal-title"></h4>
+                <button class="modal-close" aria-label="Close modal">
+                    <i class="fas fa-times" aria-hidden="true"></i>
+                </button>
+            </div>
+            
+            <div class="modal-body">
+                <div class="modal-tabs">
+                    <button class="tab-btn active" data-tab="overview">Overview</button>
+                    <button class="tab-btn" data-tab="roadmap">Roadmap</button>
+                    <button class="tab-btn" data-tab="resources">Resources</button>
+                    <button class="tab-btn" data-tab="salary">Salary</button>
+                </div>
+                
+                <div class="tab-content">
+                    <div id="overview" class="tab-pane active">
+                        <div class="career-overview">
+                            <p class="career-description"></p>
+                            <div class="career-stats">
+                                <div class="stat">
+                                    <span class="stat-label">Growth Rate</span>
+                                    <span class="stat-value growth-rate"></span>
+                                </div>
+                                <div class="stat">
+                                    <span class="stat-label">Difficulty</span>
+                                    <span class="stat-value difficulty-level"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div id="roadmap" class="tab-pane">
+                        <div class="roadmap-container">
+                            <div class="roadmap-timeline"></div>
+                        </div>
+                    </div>
+                    
+                    <div id="resources" class="tab-pane">
+                        <div class="resources-container"></div>
+                    </div>
+                    
+                    <div id="salary" class="tab-pane">
+                        <div class="salary-container">
+                            <div class="salary-charts">
+                                <div class="salary-region">
+                                    <h5>India (INR)</h5>
+                                    <div class="salary-range india-salary"></div>
+                                </div>
+                                <div class="salary-region">
+                                    <h5>USA (USD)</h5>
+                                    <div class="salary-range usa-salary"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 
-    <!-- Loading Spinner -->
-    <div class="loading-spinner" id="loadingSpinner">
-        <div class="spinner"></div>
-        <p>Loading your career insights...</p>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>TechNext</h4>
+                <p>Empowering the next generation of tech professionals with data-driven career guidance.</p>
+            </div>
+            <div class="footer-section">
+                <h5>Quick Links</h5>
+                <ul>
+                    <li><a href="#careers">Career Paths</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="https://github.com/divyaanshforever/tech-next" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h5>Resources</h5>
+                <ul>
+                    <li><a href="#" onclick="openModal('roadmaps')">Learning Roadmaps</a></li>
+                    <li><a href="#" onclick="openModal('salary-guide')">Salary Guide</a></li>
+                    <li><a href="#" onclick="openModal('tips')">Career Tips</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 TechNext. Built with ❤️ for the tech community.</p>
+        </div>
+    </footer>
+
+    <!-- Error Toast -->
+    <div id="errorToast" class="toast error" role="alert" aria-live="polite" style="display: none;">
+        <div class="toast-content">
+            <i class="fas fa-exclamation-triangle" aria-hidden="true"></i>
+            <span class="toast-message"></span>
+        </div>
+        <button class="toast-close" aria-label="Close notification">
+            <i class="fas fa-times" aria-hidden="true"></i>
+        </button>
+    </div>
+
+    <!-- Success Toast -->
+    <div id="successToast" class="toast success" role="alert" aria-live="polite" style="display: none;">
+        <div class="toast-content">
+            <i class="fas fa-check-circle" aria-hidden="true"></i>
+            <span class="toast-message"></span>
+        </div>
+        <button class="toast-close" aria-label="Close notification">
+            <i class="fas fa-times" aria-hidden="true"></i>
+        </button>
     </div>
 
     <!-- Scripts -->
     <script src="data.js"></script>
     <script src="script.js"></script>
+    
+    <!-- Service Worker Registration -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js')
+                    .then((registration) => {
+                        console.log('SW registered: ', registration);
+                    })
+                    .catch((registrationError) => {
+                        console.log('SW registration failed: ', registrationError);
+                    });
+            });
+        }
+    </script>
 </body>
 </html>

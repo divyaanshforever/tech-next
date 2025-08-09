@@ -317,13 +317,11 @@ class TechCareerHub {
      */
     setupServiceWorker() {
         if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('/sw.js')
-                .then((registration) => {
-                    console.log('SW registered: ', registration);
-                })
-                .catch((registrationError) => {
-                    console.log('SW registration failed: ', registrationError);
-                });
+            // register the service worker with proper repo-relative path
+          navigator.serviceWorker.register('sw.js', { scope: '/tech-next/' })
+            .then(function(reg) { console.log('sw registered', reg); })
+            .catch(console.error);
+            });
         }
     }
 

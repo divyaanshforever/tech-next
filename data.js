@@ -1,986 +1,590 @@
-// Enhanced Career Data with Detailed Roadmaps and Timeline
-const careers = [
+/**
+ * Career Data for TechNext
+ * Enhanced with comprehensive career information, roadmaps, and resources
+ */
+
+window.careerData = [
     {
-        id: 'fullstack-developer',
-        title: 'Full Stack Developer',
-        category: 'development',
-        description: 'Build complete web applications from database to user interface.',
-        detailedDescription: 'Full Stack Developers are versatile professionals who can work on both frontend and backend development. They have a comprehensive understanding of web development technologies and can build complete applications from scratch.',
-        icon: 'fas fa-code',
-        salary: {
-            india: '₹6-25 LPA',
-            usa: '$75-150K'
-        },
-        salaryBreakdown: {
-            india: {
-                entry: '₹4-8 LPA',
-                mid: '₹10-18 LPA',
-                senior: '₹20-35 LPA'
-            },
-            usa: {
-                entry: '$65-85K',
-                mid: '$90-130K',
-                senior: '$140-200K'
-            }
-        },
-        growth: 'Expected to grow 13% from 2020-2030, faster than average',
-        timeline: '8-12 months to job-ready',
-        demand: 'Very High',
-        remote: 'Excellent',
-        barrier: 'Medium',
-        opportunities: 'High demand across all industries, especially tech startups',
-        topCompanies: ['Google', 'Microsoft', 'Amazon', 'Netflix', 'Airbnb', 'Uber'],
-        skills: ['JavaScript', 'React', 'Node.js', 'Python', 'SQL', 'Git', 'AWS', 'Docker'],
-        detailedRoadmap: [
-            {
-                title: 'Foundation Phase',
-                duration: '2-3 months',
-                description: 'Build strong fundamentals in web technologies and programming concepts.',
-                skills: ['HTML5', 'CSS3', 'JavaScript ES6+', 'Git', 'Command Line'],
-                resources: [
-                    {
-                        name: 'MDN Web Docs',
-                        type: 'Documentation',
-                        url: 'https://developer.mozilla.org',
-                        icon: 'fas fa-book'
-                    },
-                    {
-                        name: 'freeCodeCamp',
-                        type: 'Course',
-                        url: 'https://freecodecamp.org',
-                        icon: 'fas fa-graduation-cap'
-                    },
-                    {
-                        name: 'JavaScript30',
-                        type: 'Challenge',
-                        url: 'https://javascript30.com',
-                        icon: 'fas fa-code'
-                    }
-                ]
-            },
-            {
-                title: 'Frontend Mastery',
-                duration: '2-3 months',
-                description: 'Master modern frontend frameworks and tools for building interactive user interfaces.',
-                skills: ['React', 'Vue.js', 'TypeScript', 'Webpack', 'Sass/SCSS', 'Responsive Design'],
-                resources: [
-                    {
-                        name: 'React Official Docs',
-                        type: 'Documentation',
-                        url: 'https://reactjs.org',
-                        icon: 'fab fa-react'
-                    },
-                    {
-                        name: 'Vue.js Guide',
-                        type: 'Tutorial',
-                        url: 'https://vuejs.org',
-                        icon: 'fab fa-vuejs'
-                    },
-                    {
-                        name: 'TypeScript Handbook',
-                        type: 'Guide',
-                        url: 'https://typescriptlang.org',
-                        icon: 'fas fa-book'
-                    }
-                ]
-            },
-            {
-                title: 'Backend Development',
-                duration: '3-4 months',
-                description: 'Learn server-side programming, databases, and API development.',
-                skills: ['Node.js', 'Express.js', 'Python/Django', 'PostgreSQL', 'MongoDB', 'RESTful APIs'],
-                resources: [
-                    {
-                        name: 'Node.js Docs',
-                        type: 'Documentation',
-                        url: 'https://nodejs.org',
-                        icon: 'fab fa-node-js'
-                    },
-                    {
-                        name: 'Django Tutorial',
-                        type: 'Course',
-                        url: 'https://djangoproject.com',
-                        icon: 'fas fa-python'
-                    },
-                    {
-                        name: 'PostgreSQL Tutorial',
-                        type: 'Tutorial',
-                        url: 'https://postgresql.org',
-                        icon: 'fas fa-database'
-                    }
-                ]
-            },
-            {
-                title: 'DevOps & Deployment',
-                duration: '1-2 months',
-                description: 'Learn to deploy applications and manage infrastructure.',
-                skills: ['Docker', 'AWS/Azure', 'CI/CD', 'Nginx', 'Linux', 'Monitoring'],
-                resources: [
-                    {
-                        name: 'Docker Documentation',
-                        type: 'Guide',
-                        url: 'https://docker.com',
-                        icon: 'fab fa-docker'
-                    },
-                    {
-                        name: 'AWS Getting Started',
-                        type: 'Tutorial',
-                        url: 'https://aws.amazon.com',
-                        icon: 'fab fa-aws'
-                    },
-                    {
-                        name: 'Digital Ocean Tutorials',
-                        type: 'Tutorial',
-                        url: 'https://digitalocean.com',
-                        icon: 'fas fa-server'
-                    }
-                ]
-            }
+        id: "full-stack-developer",
+        title: "Full Stack Developer",
+        category: "Development",
+        type: "development",
+        icon: "fas fa-code",
+        description: "Build complete web applications from front-end user interfaces to back-end server logic and databases. Master both client-side and server-side technologies.",
+        difficulty: "Medium",
+        timeToLearn: "8-12 Months",
+        jobGrowth: "High",
+        salaryIndia: "₹4-15 LPA",
+        salaryUSA: "$70-130K",
+        growth: "Expected to grow 22% from 2020-2030, much faster than average",
+        skills: ["Swift", "Kotlin", "React Native", "Flutter", "Java", "Objective-C", "Dart"],
+        keywords: ["mobile", "ios", "android", "react native", "flutter", "swift", "kotlin", "app"],
+        roadmap: [
+            "Choose a platform (iOS, Android, or Cross-platform)",
+            "Learn platform-specific language (Swift/Kotlin or React Native/Flutter)",
+            "Understand mobile UI/UX design principles",
+            "Learn mobile-specific APIs and services",
+            "Practice with app store deployment",
+            "Learn mobile testing and debugging",
+            "Build portfolio apps and publish to stores"
         ],
         resources: [
             {
-                category: 'Courses',
-                icon: 'fas fa-graduation-cap',
-                items: [
-                    { name: 'The Complete Web Developer Bootcamp', type: 'Udemy Course', url: '#', price: '₹499', rating: 4.8 },
-                    { name: 'Full Stack Open', type: 'Free Course', url: '#', price: 'Free', rating: 4.9 },
-                    { name: 'The Odin Project', type: 'Free Curriculum', url: '#', price: 'Free', rating: 4.7 }
-                ]
+                name: "React Native Documentation",
+                url: "https://reactnative.dev/docs/getting-started",
+                icon: "fab fa-react",
+                description: "Official React Native learning guide"
             },
             {
-                category: 'Tools',
-                icon: 'fas fa-tools',
-                items: [
-                    { name: 'Visual Studio Code', type: 'Code Editor', url: '#', price: 'Free', rating: 4.9 },
-                    { name: 'Postman', type: 'API Testing', url: '#', price: 'Free/Paid', rating: 4.8 },
-                    { name: 'GitHub', type: 'Version Control', url: '#', price: 'Free/Paid', rating: 4.8 }
-                ]
+                name: "Flutter Documentation",
+                url: "https://flutter.dev/docs",
+                icon: "fas fa-mobile",
+                description: "Comprehensive Flutter development guide"
+            },
+            {
+                name: "iOS Development with Swift",
+                url: "https://developer.apple.com/swift/",
+                icon: "fab fa-apple",
+                description: "Apple's official Swift resources"
             }
         ]
     },
     {
-        id: 'data-scientist',
-        title: 'Data Scientist',
-        category: 'data',
-        description: 'Extract insights from data to drive business decisions and predictions.',
-        detailedDescription: 'Data Scientists combine statistical analysis, machine learning, and domain expertise to extract meaningful insights from large datasets. They help organizations make data-driven decisions and build predictive models.',
-        icon: 'fas fa-chart-line',
-        salary: {
-            india: '₹8-30 LPA',
-            usa: '$95-170K'
-        },
-        salaryBreakdown: {
-            india: {
-                entry: '₹6-12 LPA',
-                mid: '₹15-25 LPA',
-                senior: '₹25-45 LPA'
-            },
-            usa: {
-                entry: '$85-110K',
-                mid: '$120-150K',
-                senior: '$160-250K'
-            }
-        },
-        growth: 'Expected to grow 22% from 2020-2030, much faster than average',
-        timeline: '10-18 months to job-ready',
-        demand: 'Very High',
-        remote: 'Excellent',
-        barrier: 'High',
-        opportunities: 'High demand in finance, healthcare, tech, and consulting',
-        topCompanies: ['Google', 'Microsoft', 'Amazon', 'Facebook', 'Netflix', 'Spotify'],
-        skills: ['Python', 'R', 'SQL', 'Machine Learning', 'Statistics', 'Pandas', 'TensorFlow', 'Tableau'],
-        detailedRoadmap: [
-            {
-                title: 'Mathematical Foundation',
-                duration: '3-4 months',
-                description: 'Build strong foundation in mathematics and statistics essential for data science.',
-                skills: ['Statistics', 'Linear Algebra', 'Calculus', 'Probability', 'Descriptive Statistics'],
-                resources: [
-                    {
-                        name: 'Khan Academy Statistics',
-                        type: 'Course',
-                        url: 'https://khanacademy.org',
-                        icon: 'fas fa-calculator'
-                    },
-                    {
-                        name: '3Blue1Brown Linear Algebra',
-                        type: 'Video Series',
-                        url: 'https://youtube.com',
-                        icon: 'fab fa-youtube'
-                    }
-                ]
-            },
-            {
-                title: 'Programming & Tools',
-                duration: '2-3 months',
-                description: 'Master programming languages and tools used in data science.',
-                skills: ['Python', 'R', 'SQL', 'Jupyter Notebooks', 'Git', 'Command Line'],
-                resources: [
-                    {
-                        name: 'Python for Data Science',
-                        type: 'Course',
-                        url: 'https://coursera.org',
-                        icon: 'fab fa-python'
-                    },
-                    {
-                        name: 'R Programming',
-                        type: 'Course',
-                        url: 'https://datacamp.com',
-                        icon: 'fas fa-chart-bar'
-                    }
-                ]
-            },
-            {
-                title: 'Data Analysis & Visualization',
-                duration: '3-4 months',
-                description: 'Learn to clean, analyze, and visualize data effectively.',
-                skills: ['Pandas', 'NumPy', 'Matplotlib', 'Seaborn', 'Plotly', 'Tableau', 'Power BI'],
-                resources: [
-                    {
-                        name: 'Pandas Documentation',
-                        type: 'Guide',
-                        url: 'https://pandas.pydata.org',
-                        icon: 'fas fa-table'
-                    },
-                    {
-                        name: 'Tableau Public',
-                        type: 'Tool',
-                        url: 'https://tableau.com',
-                        icon: 'fas fa-chart-pie'
-                    }
-                ]
-            },
-            {
-                title: 'Machine Learning',
-                duration: '4-6 months',
-                description: 'Build and deploy machine learning models for predictive analytics.',
-                skills: ['Scikit-learn', 'TensorFlow', 'PyTorch', 'Deep Learning', 'NLP', 'Computer Vision'],
-                resources: [
-                    {
-                        name: 'Andrew Ng ML Course',
-                        type: 'Course',
-                        url: 'https://coursera.org',
-                        icon: 'fas fa-brain'
-                    },
-                    {
-                        name: 'Fast.ai',
-                        type: 'Course',
-                        url: 'https://fast.ai',
-                        icon: 'fas fa-rocket'
-                    }
-                ]
-            }
+        id: "devops-engineer",
+        title: "DevOps Engineer",
+        category: "Infrastructure",
+        type: "infrastructure",
+        icon: "fas fa-cogs",
+        description: "Bridge development and operations teams. Automate deployment processes, manage infrastructure, and ensure system reliability and scalability.",
+        difficulty: "Hard",
+        timeToLearn: "10-16 Months",
+        jobGrowth: "Very High",
+        salaryIndia: "₹6-22 LPA",
+        salaryUSA: "$85-160K",
+        growth: "Expected to grow 21% from 2020-2030, much faster than average",
+        skills: ["AWS", "Docker", "Kubernetes", "Jenkins", "Python", "Linux", "Terraform"],
+        keywords: ["devops", "aws", "docker", "kubernetes", "ci/cd", "automation", "infrastructure", "cloud"],
+        roadmap: [
+            "Learn Linux system administration",
+            "Understand networking and security basics",
+            "Learn scripting with Python or Bash",
+            "Master containerization with Docker",
+            "Learn orchestration with Kubernetes",
+            "Practice CI/CD with Jenkins or GitHub Actions",
+            "Study cloud platforms (AWS, Azure, or GCP)",
+            "Learn Infrastructure as Code (Terraform, CloudFormation)"
         ],
         resources: [
             {
-                category: 'Courses',
-                icon: 'fas fa-graduation-cap',
-                items: [
-                    { name: 'IBM Data Science Professional Certificate', type: 'Coursera', url: '#', price: '$49/month', rating: 4.8 },
-                    { name: 'Data Science Specialization', type: 'Johns Hopkins', url: '#', price: '$49/month', rating: 4.7 },
-                    { name: 'CS109 Harvard', type: 'Free Course', url: '#', price: 'Free', rating: 4.9 }
-                ]
+                name: "AWS Training and Certification",
+                url: "https://aws.amazon.com/training/",
+                icon: "fab fa-aws",
+                description: "Official AWS learning resources"
+            },
+            {
+                name: "Docker Official Tutorial",
+                url: "https://docs.docker.com/get-started/",
+                icon: "fab fa-docker",
+                description: "Learn containerization with Docker"
+            },
+            {
+                name: "Kubernetes Documentation",
+                url: "https://kubernetes.io/docs/home/",
+                icon: "fas fa-dharmachakra",
+                description: "Master container orchestration"
             }
         ]
     },
     {
-        id: 'ml-engineer',
-        title: 'Machine Learning Engineer',
-        category: 'data',
-        description: 'Design and implement machine learning systems and algorithms.',
-        detailedDescription: 'Machine Learning Engineers bridge the gap between data science and software engineering. They build scalable ML systems, deploy models to production, and maintain ML infrastructure.',
-        icon: 'fas fa-brain',
-        salary: {
-            india: '₹10-35 LPA',
-            usa: '$110-200K'
-        },
-        growth: 'Expected to grow 25% from 2020-2030, much faster than average',
-        timeline: '12-20 months to job-ready',
-        demand: 'Very High',
-        remote: 'Excellent',
-        barrier: 'High',
-        skills: ['Python', 'TensorFlow', 'PyTorch', 'Kubernetes', 'Docker', 'AWS ML', 'MLOps', 'Statistics'],
-        detailedRoadmap: [
-            {
-                title: 'Programming & Software Engineering',
-                duration: '3-4 months',
-                description: 'Build strong software engineering fundamentals.',
-                skills: ['Python', 'Object-Oriented Programming', 'Data Structures', 'Algorithms', 'Git'],
-                resources: [
-                    {
-                        name: 'Python Crash Course',
-                        type: 'Book',
-                        url: '#',
-                        icon: 'fas fa-book'
-                    }
-                ]
-            },
-            {
-                title: 'Machine Learning Foundations',
-                duration: '4-5 months',
-                description: 'Master core ML algorithms and mathematical foundations.',
-                skills: ['Linear Algebra', 'Statistics', 'Supervised Learning', 'Unsupervised Learning', 'Deep Learning'],
-                resources: [
-                    {
-                        name: 'Elements of Statistical Learning',
-                        type: 'Book',
-                        url: '#',
-                        icon: 'fas fa-book'
-                    }
-                ]
-            },
-            {
-                title: 'ML Engineering & MLOps',
-                duration: '3-4 months',
-                description: 'Learn to build, deploy, and maintain ML systems at scale.',
-                skills: ['MLOps', 'Model Deployment', 'Kubernetes', 'Docker', 'CI/CD for ML', 'Model Monitoring'],
-                resources: [
-                    {
-                        name: 'MLOps Zoomcamp',
-                        type: 'Course',
-                        url: '#',
-                        icon: 'fas fa-graduation-cap'
-                    }
-                ]
-            },
-            {
-                title: 'Specialization & Production',
-                duration: '2-4 months',
-                description: 'Choose a specialization and build production-ready systems.',
-                skills: ['Computer Vision', 'NLP', 'Recommendation Systems', 'Time Series', 'A/B Testing'],
-                resources: [
-                    {
-                        name: 'Deep Learning Specialization',
-                        type: 'Course',
-                        url: '#',
-                        icon: 'fas fa-brain'
-                    }
-                ]
-            }
+        id: "cybersecurity-specialist",
+        title: "Cybersecurity Specialist",
+        category: "Infrastructure",
+        type: "infrastructure",
+        icon: "fas fa-shield-alt",
+        description: "Protect organizations from cyber threats. Implement security measures, conduct risk assessments, and respond to security incidents.",
+        difficulty: "Hard",
+        timeToLearn: "12-18 Months",
+        jobGrowth: "Very High",
+        salaryIndia: "₹5-20 LPA",
+        salaryUSA: "$80-150K",
+        growth: "Expected to grow 33% from 2020-2030, much faster than average",
+        skills: ["Network Security", "Penetration Testing", "Python", "Linux", "CISSP", "Ethical Hacking"],
+        keywords: ["cybersecurity", "security", "hacking", "penetration testing", "network security", "cissp"],
+        roadmap: [
+            "Learn networking fundamentals and protocols",
+            "Understand operating systems (Linux, Windows)",
+            "Study cybersecurity fundamentals and frameworks",
+            "Learn ethical hacking and penetration testing",
+            "Practice with security tools (Nmap, Wireshark, Metasploit)",
+            "Get security certifications (CompTIA Security+, CEH)",
+            "Specialize in areas like incident response or compliance"
         ],
         resources: [
             {
-                category: 'Courses',
-                icon: 'fas fa-graduation-cap',
-                items: [
-                    { name: 'Machine Learning Engineering for Production', type: 'Coursera', url: '#', price: '$49/month', rating: 4.8 },
-                    { name: 'MLOps Zoomcamp', type: 'DataTalks.Club', url: '#', price: 'Free', rating: 4.9 }
-                ]
+                name: "Cybrary Free Courses",
+                url: "https://www.cybrary.it/",
+                icon: "fas fa-graduation-cap",
+                description: "Free cybersecurity training platform"
+            },
+            {
+                name: "OWASP Learning Resources",
+                url: "https://owasp.org/www-project-top-ten/",
+                icon: "fas fa-bug",
+                description: "Web application security knowledge"
+            },
+            {
+                name: "SANS Reading Room",
+                url: "https://www.sans.org/reading-room/",
+                icon: "fas fa-book",
+                description: "Research papers on security topics"
             }
         ]
     },
     {
-        id: 'frontend-developer',
-        title: 'Frontend Developer',
-        category: 'development',
-        description: 'Create beautiful and interactive user interfaces for web applications.',
-        detailedDescription: 'Frontend Developers focus on the client-side of web applications, creating engaging user experiences through modern web technologies, responsive design, and interactive features.',
-        icon: 'fab fa-react',
-        salary: {
-            india: '₹4-20 LPA',
-            usa: '$65-130K'
-        },
-        salaryBreakdown: {
-            india: {
-                entry: '₹3-6 LPA',
-                mid: '₹8-15 LPA',
-                senior: '₹18-30 LPA'
-            },
-            usa: {
-                entry: '$55-75K',
-                mid: '$80-110K',
-                senior: '$120-180K'
-            }
-        },
-        growth: 'Expected to grow 8% from 2020-2030',
-        timeline: '6-10 months to job-ready',
-        demand: 'High',
-        remote: 'Excellent',
-        barrier: 'Low-Medium',
-        skills: ['HTML', 'CSS', 'JavaScript', 'React', 'Vue.js', 'TypeScript', 'Webpack', 'Sass'],
-        detailedRoadmap: [
-            {
-                title: 'Web Fundamentals',
-                duration: '2-3 months',
-                description: 'Master the building blocks of web development.',
-                skills: ['HTML5', 'CSS3', 'JavaScript ES6+', 'DOM Manipulation', 'Responsive Design'],
-                resources: [
-                    {
-                        name: 'MDN Web Docs',
-                        type: 'Documentation',
-                        url: '#',
-                        icon: 'fas fa-book'
-                    }
-                ]
-            },
-            {
-                title: 'Modern JavaScript & Frameworks',
-                duration: '3-4 months',
-                description: 'Learn modern JavaScript and popular frontend frameworks.',
-                skills: ['React', 'Vue.js', 'TypeScript', 'State Management', 'Component Design'],
-                resources: []
-            },
-            {
-                title: 'Build Tools & Workflow',
-                duration: '1-2 months',
-                description: 'Master development tools and modern workflows.',
-                skills: ['Webpack', 'Vite', 'npm/yarn', 'Git', 'Testing', 'Performance Optimization'],
-                resources: []
-            },
-            {
-                title: 'Advanced Topics',
-                duration: '1-2 months',
-                description: 'Dive into advanced frontend concepts and best practices.',
-                skills: ['Progressive Web Apps', 'Accessibility', 'SEO', 'Animation', 'Micro-frontends'],
-                resources: []
-            }
+        id: "blockchain-developer",
+        title: "Blockchain Developer",
+        category: "Development",
+        type: "development",
+        icon: "fas fa-link",
+        description: "Build decentralized applications and smart contracts. Work with blockchain technologies to create secure, transparent systems.",
+        difficulty: "Hard",
+        timeToLearn: "10-15 Months",
+        jobGrowth: "Very High",
+        salaryIndia: "₹6-25 LPA",
+        salaryUSA: "$90-180K",
+        growth: "Emerging field with exponential growth potential",
+        skills: ["Solidity", "JavaScript", "Web3.js", "Ethereum", "Smart Contracts", "Cryptography"],
+        keywords: ["blockchain", "cryptocurrency", "ethereum", "solidity", "smart contracts", "defi", "web3"],
+        roadmap: [
+            "Learn blockchain fundamentals and cryptography",
+            "Understand Ethereum and smart contract basics",
+            "Learn Solidity programming language",
+            "Practice with development frameworks (Truffle, Hardhat)",
+            "Study DeFi protocols and dApp architecture",
+            "Learn Web3.js for frontend integration",
+            "Build and deploy blockchain projects"
         ],
         resources: [
             {
-                category: 'Courses',
-                icon: 'fas fa-graduation-cap',
-                items: [
-                    { name: 'React - The Complete Guide', type: 'Udemy', url: '#', price: '₹799', rating: 4.7 },
-                    { name: 'JavaScript30', type: 'Free Challenge', url: '#', price: 'Free', rating: 4.8 }
-                ]
+                name: "Solidity Documentation",
+                url: "https://docs.soliditylang.org/",
+                icon: "fas fa-file-code",
+                description: "Official Solidity language guide"
+            },
+            {
+                name: "CryptoZombies",
+                url: "https://cryptozombies.io/",
+                icon: "fas fa-gamepad",
+                description: "Learn Solidity by building games"
+            },
+            {
+                name: "Ethereum.org Developer Resources",
+                url: "https://ethereum.org/en/developers/",
+                icon: "fab fa-ethereum",
+                description: "Complete Ethereum development guide"
             }
         ]
     },
     {
-        id: 'backend-developer',
-        title: 'Backend Developer',
-        category: 'development',
-        description: 'Build server-side logic, APIs, and database systems.',
-        detailedDescription: 'Backend Developers work on server-side applications, designing and implementing APIs, managing databases, and ensuring scalable and secure server architecture.',
-        icon: 'fas fa-server',
-        salary: {
-            india: '₹5-22 LPA',
-            usa: '$70-140K'
-        },
-        growth: 'Expected to grow 13% from 2020-2030',
-        timeline: '8-12 months to job-ready',
-        demand: 'Very High',
-        remote: 'Excellent',
-        barrier: 'Medium',
-        skills: ['Python', 'Java', 'Node.js', 'SQL', 'APIs', 'Docker', 'AWS', 'Microservices'],
-        detailedRoadmap: [
-            {
-                title: 'Programming Fundamentals',
-                duration: '2-3 months',
-                description: 'Choose and master a backend programming language.',
-                skills: ['Python/Java/Node.js', 'Object-Oriented Programming', 'Data Structures', 'Algorithms'],
-                resources: []
-            },
-            {
-                title: 'Web Development & APIs',
-                duration: '3-4 months',
-                description: 'Learn to build web servers and RESTful APIs.',
-                skills: ['HTTP Protocol', 'REST APIs', 'Express.js/Django/Spring Boot', 'Authentication', 'Validation'],
-                resources: []
-            },
-            {
-                title: 'Databases & Data Management',
-                duration: '2-3 months',
-                description: 'Master database design and data management.',
-                skills: ['SQL', 'PostgreSQL', 'MongoDB', 'Database Design', 'ORMs', 'Caching'],
-                resources: []
-            },
-            {
-                title: 'DevOps & Scaling',
-                duration: '2-3 months',
-                description: 'Learn deployment, monitoring, and scaling techniques.',
-                skills: ['Docker', 'AWS/Azure', 'Load Balancing', 'Monitoring', 'Security', 'Microservices'],
-                resources: []
-            }
+        id: "game-developer",
+        title: "Game Developer",
+        category: "Development",
+        type: "development",
+        icon: "fas fa-gamepad",
+        description: "Create interactive gaming experiences across platforms. Design game mechanics, implement graphics, and optimize performance for engaging gameplay.",
+        difficulty: "Medium-Hard",
+        timeToLearn: "10-16 Months",
+        jobGrowth: "High",
+        salaryIndia: "₹3-15 LPA",
+        salaryUSA: "$65-130K",
+        growth: "Expected to grow 11% from 2020-2030, faster than average",
+        skills: ["Unity", "Unreal Engine", "C#", "C++", "3D Graphics", "Game Design", "Mathematics"],
+        keywords: ["game development", "unity", "unreal engine", "c#", "c++", "3d graphics", "gaming"],
+        roadmap: [
+            "Learn game development fundamentals and math",
+            "Choose a game engine (Unity or Unreal Engine)",
+            "Master the engine's scripting language (C# or C++)",
+            "Study game design principles and mechanics",
+            "Learn 3D graphics and animation basics",
+            "Practice with small game projects",
+            "Build a portfolio of complete games"
         ],
-        resources: []
+        resources: [
+            {
+                name: "Unity Learn Platform",
+                url: "https://learn.unity.com/",
+                icon: "fas fa-cube",
+                description: "Official Unity learning resources"
+            },
+            {
+                name: "Unreal Engine Documentation",
+                url: "https://docs.unrealengine.com/",
+                icon: "fas fa-rocket",
+                description: "Complete Unreal Engine guide"
+            },
+            {
+                name: "Game Development Patterns",
+                url: "https://gameprogrammingpatterns.com/",
+                icon: "fas fa-book",
+                description: "Essential game programming patterns"
+            }
+        ]
     },
     {
-        id: 'mobile-developer',
-        title: 'Mobile Developer',
-        category: 'development',
-        description: 'Create native and cross-platform mobile applications.',
-        detailedDescription: 'Mobile Developers specialize in building applications for iOS and Android platforms, using native technologies or cross-platform frameworks.',
-        icon: 'fas fa-mobile-alt',
-        salary: {
-            india: '₹4-18 LPA',
-            usa: '$70-135K'
-        },
-        growth: 'Expected to grow 22% from 2020-2030',
-        timeline: '8-14 months to job-ready',
-        demand: 'High',
-        remote: 'Good',
-        barrier: 'Medium',
-        skills: ['Swift', 'Kotlin', 'React Native', 'Flutter', 'iOS', 'Android', 'UI/UX', 'APIs'],
-        detailedRoadmap: [
-            {
-                title: 'Platform Fundamentals',
-                duration: '3-4 months',
-                description: 'Choose your platform and learn the basics.',
-                skills: ['iOS (Swift)', 'Android (Kotlin)', 'Mobile UI/UX', 'Platform Guidelines'],
-                resources: []
-            },
-            {
-                title: 'Advanced Development',
-                duration: '3-4 months',
-                description: 'Build complex apps with advanced features.',
-                skills: ['Navigation', 'Data Persistence', 'Networking', 'Push Notifications', 'Camera/GPS'],
-                resources: []
-            },
-            {
-                title: 'Cross-Platform & Publishing',
-                duration: '2-3 months',
-                description: 'Learn cross-platform development and app store publishing.',
-                skills: ['React Native/Flutter', 'App Store Guidelines', 'Testing', 'Analytics', 'Monetization'],
-                resources: []
-            }
+        id: "data-scientist",
+        title: "Data Scientist",
+        category: "Data & AI",
+        type: "data",
+        icon: "fas fa-chart-line",
+        description: "Extract insights from complex datasets using statistical analysis and machine learning. Turn data into actionable business intelligence.",
+        difficulty: "Hard",
+        timeToLearn: "12-18 Months",
+        jobGrowth: "Very High",
+        salaryIndia: "₹6-20 LPA",
+        salaryUSA: "$85-165K",
+        growth: "Expected to grow 22% from 2020-2030, much faster than average",
+        skills: ["Python", "R", "SQL", "Statistics", "Pandas", "Scikit-learn", "Tableau", "Machine Learning"],
+        keywords: ["data science", "python", "statistics", "machine learning", "analytics", "pandas", "visualization"],
+        roadmap: [
+            "Learn Python or R programming",
+            "Master statistics and probability",
+            "Learn data manipulation with Pandas/dplyr",
+            "Study data visualization techniques",
+            "Understand machine learning algorithms",
+            "Practice with real datasets and competitions",
+            "Learn big data tools (Spark, Hadoop) if needed",
+            "Build data science portfolio projects"
         ],
-        resources: []
+        resources: [
+            {
+                name: "Coursera Data Science Specialization",
+                url: "https://www.coursera.org/specializations/jhu-data-science",
+                icon: "fas fa-graduation-cap",
+                description: "Comprehensive data science program"
+            },
+            {
+                name: "Kaggle Courses",
+                url: "https://www.kaggle.com/learn",
+                icon: "fas fa-trophy",
+                description: "Practical data science micro-courses"
+            },
+            {
+                name: "Python Data Science Handbook",
+                url: "https://jakevdp.github.io/PythonDataScienceHandbook/",
+                icon: "fas fa-book-open",
+                description: "Essential data science with Python"
+            }
+        ]
     },
     {
-        id: 'devops-engineer',
-        title: 'DevOps Engineer',
-        category: 'infrastructure',
-        description: 'Automate and streamline software development and deployment processes.',
-        detailedDescription: 'DevOps Engineers bridge development and operations teams, implementing CI/CD pipelines, managing infrastructure, and ensuring reliable software delivery.',
-        icon: 'fas fa-cogs',
-        salary: {
-            india: '₹6-25 LPA',
-            usa: '$85-155K'
-        },
-        growth: 'Expected to grow 21% from 2020-2030',
-        timeline: '10-16 months to job-ready',
-        demand: 'Very High',
-        remote: 'Excellent',
-        barrier: 'High',
-        skills: ['Docker', 'Kubernetes', 'AWS', 'Linux', 'CI/CD', 'Terraform', 'Monitoring', 'Scripting'],
-        detailedRoadmap: [
-            {
-                title: 'Linux & Scripting',
-                duration: '2-3 months',
-                description: 'Master Linux systems and automation scripting.',
-                skills: ['Linux Administration', 'Bash Scripting', 'Python', 'System Administration'],
-                resources: []
-            },
-            {
-                title: 'Containerization & Orchestration',
-                duration: '3-4 months',
-                description: 'Learn containerization and container orchestration.',
-                skills: ['Docker', 'Kubernetes', 'Container Security', 'Service Mesh'],
-                resources: []
-            },
-            {
-                title: 'Cloud & Infrastructure',
-                duration: '3-4 months',
-                description: 'Master cloud platforms and infrastructure as code.',
-                skills: ['AWS/Azure/GCP', 'Terraform', 'CloudFormation', 'Networking', 'Security'],
-                resources: []
-            },
-            {
-                title: 'CI/CD & Monitoring',
-                duration: '2-3 months',
-                description: 'Implement continuous integration and monitoring systems.',
-                skills: ['Jenkins', 'GitLab CI', 'Prometheus', 'Grafana', 'ELK Stack', 'Incident Management'],
-                resources: []
-            }
+        id: "ui-ux-designer",
+        title: "UI/UX Designer",
+        category: "Design",
+        type: "design",
+        icon: "fas fa-paintbrush",
+        description: "Design intuitive user interfaces and experiences. Research user needs, create wireframes, and design visually appealing digital products.",
+        difficulty: "Medium",
+        timeToLearn: "6-12 Months",
+        jobGrowth: "High",
+        salaryIndia: "₹3-12 LPA",
+        salaryUSA: "$60-120K",
+        growth: "Expected to grow 8% from 2020-2030, faster than average",
+        skills: ["Figma", "Adobe XD", "Sketch", "User Research", "Prototyping", "Design Systems", "HTML/CSS"],
+        keywords: ["ui design", "ux design", "figma", "adobe xd", "prototyping", "user research", "wireframes"],
+        roadmap: [
+            "Learn design fundamentals and color theory",
+            "Study user experience principles and psychology",
+            "Master design tools (Figma, Adobe XD)",
+            "Practice user research and testing methods",
+            "Learn prototyping and wireframing",
+            "Study accessibility and inclusive design",
+            "Build a strong design portfolio"
         ],
-        resources: []
+        resources: [
+            {
+                name: "Google UX Design Certificate",
+                url: "https://www.coursera.org/professional-certificates/google-ux-design",
+                icon: "fab fa-google",
+                description: "Professional UX design program by Google"
+            },
+            {
+                name: "Figma Academy",
+                url: "https://www.figma.com/academy/",
+                icon: "fas fa-graduation-cap",
+                description: "Learn design with Figma"
+            },
+            {
+                name: "Nielsen Norman Group",
+                url: "https://www.nngroup.com/articles/",
+                icon: "fas fa-lightbulb",
+                description: "UX research and design insights"
+            }
+        ]
     },
     {
-        id: 'cybersecurity-specialist',
-        title: 'Cybersecurity Specialist',
-        category: 'security',
-        description: 'Protect systems and data from security threats and vulnerabilities.',
-        detailedDescription: 'Cybersecurity Specialists identify vulnerabilities, implement security measures, and respond to security incidents to protect organizations from cyber threats.',
-        icon: 'fas fa-shield-alt',
-        salary: {
-            india: '₹6-28 LPA',
-            usa: '$90-165K'
-        },
-        growth: 'Expected to grow 33% from 2020-2030, much faster than average',
-        timeline: '12-18 months to job-ready',
-        demand: 'Very High',
-        remote: 'Good',
-        barrier: 'High',
-        skills: ['Ethical Hacking', 'Network Security', 'Risk Assessment', 'Incident Response', 'Compliance', 'Forensics'],
-        detailedRoadmap: [
-            {
-                title: 'Security Fundamentals',
-                duration: '3-4 months',
-                description: 'Build foundational knowledge of cybersecurity concepts.',
-                skills: ['Security Principles', 'Risk Management', 'Compliance', 'Cryptography'],
-                resources: []
-            },
-            {
-                title: 'Network & System Security',
-                duration: '4-5 months',
-                description: 'Learn to secure networks and systems.',
-                skills: ['Network Security', 'Firewalls', 'IDS/IPS', 'Vulnerability Assessment', 'Penetration Testing'],
-                resources: []
-            },
-            {
-                title: 'Incident Response & Forensics',
-                duration: '3-4 months',
-                description: 'Master incident response and digital forensics.',
-                skills: ['Incident Response', 'Digital Forensics', 'Malware Analysis', 'Threat Hunting'],
-                resources: []
-            },
-            {
-                title: 'Specialization',
-                duration: '2-3 months',
-                description: 'Choose a specialization area.',
-                skills: ['Cloud Security', 'Application Security', 'IoT Security', 'AI Security'],
-                resources: []
-            }
+        id: "cloud-architect",
+        title: "Cloud Architect",
+        category: "Infrastructure",
+        type: "infrastructure",
+        icon: "fas fa-cloud",
+        description: "Design and implement scalable cloud infrastructure solutions. Plan cloud adoption strategies and optimize cloud resources for organizations.",
+        difficulty: "Hard",
+        timeToLearn: "12-18 Months",
+        jobGrowth: "Very High",
+        salaryIndia: "₹8-30 LPA",
+        salaryUSA: "$100-200K",
+        growth: "Expected to grow 19% from 2020-2030, much faster than average",
+        skills: ["AWS", "Azure", "GCP", "Terraform", "Kubernetes", "Microservices", "Security"],
+        keywords: ["cloud architecture", "aws", "azure", "gcp", "terraform", "microservices", "scalability"],
+        roadmap: [
+            "Learn cloud computing fundamentals",
+            "Master one major cloud platform (AWS/Azure/GCP)",
+            "Understand networking and security in the cloud",
+            "Learn Infrastructure as Code (Terraform)",
+            "Study microservices and containerization",
+            "Practice with cloud architecture patterns",
+            "Get cloud certifications and build projects"
         ],
-        resources: []
-    },
-    {
-        id: 'blockchain-developer',
-        title: 'Blockchain Developer',
-        category: 'emerging',
-        description: 'Build decentralized applications and blockchain solutions.',
-        detailedDescription: 'Blockchain Developers create decentralized applications, smart contracts, and blockchain protocols using various blockchain technologies.',
-        icon: 'fas fa-link',
-        salary: {
-            india: '₹8-30 LPA',
-            usa: '$100-180K'
-        },
-        growth: 'Expected to grow 67% from 2020-2030',
-        timeline: '10-16 months to job-ready',
-        demand: 'High',
-        remote: 'Excellent',
-        barrier: 'High',
-        skills: ['Solidity', 'Ethereum', 'Web3.js', 'Smart Contracts', 'DeFi', 'Cryptography'],
-        detailedRoadmap: [
+        resources: [
             {
-                title: 'Blockchain Fundamentals',
-                duration: '2-3 months',
-                description: 'Understand blockchain technology and cryptocurrencies.',
-                skills: ['Blockchain Basics', 'Bitcoin', 'Ethereum', 'Consensus Mechanisms', 'Cryptography'],
-                resources: []
+                name: "AWS Architecture Center",
+                url: "https://aws.amazon.com/architecture/",
+                icon: "fab fa-aws",
+                description: "Best practices for AWS architecture"
             },
             {
-                title: 'Smart Contract Development',
-                duration: '3-4 months',
-                description: 'Learn to write and deploy smart contracts.',
-                skills: ['Solidity', 'Smart Contracts', 'Remix IDE', 'Truffle', 'Hardhat'],
-                resources: []
+                name: "Microsoft Azure Architecture Center",
+                url: "https://docs.microsoft.com/en-us/azure/architecture/",
+                icon: "fab fa-microsoft",
+                description: "Azure architecture guidance"
             },
             {
-                title: 'DApp Development',
-                duration: '3-4 months',
-                description: 'Build decentralized applications.',
-                skills: ['Web3.js', 'Ethers.js', 'React', 'IPFS', 'MetaMask Integration'],
-                resources: []
-            },
-            {
-                title: 'Advanced Topics',
-                duration: '2-3 months',
-                description: 'Explore advanced blockchain concepts.',
-                skills: ['DeFi Protocols', 'NFTs', 'Layer 2 Solutions', 'Cross-chain Development'],
-                resources: []
+                name: "Google Cloud Architecture Framework",
+                url: "https://cloud.google.com/architecture/framework",
+                icon: "fab fa-google",
+                description: "GCP architecture best practices"
             }
-        ],
-        resources: []
-    },
-    {
-        id: 'game-developer',
-        title: 'Game Developer',
-        category: 'development',
-        description: 'Create interactive gaming experiences for various platforms.',
-        detailedDescription: 'Game Developers design and implement video games for consoles, PC, mobile, and web platforms using specialized game engines and programming languages.',
-        icon: 'fas fa-gamepad',
-        salary: {
-            india: '₹3-15 LPA',
-            usa: '$55-120K'
-        },
-        growth: 'Expected to grow 11% from 2020-2030',
-        timeline: '12-20 months to job-ready',
-        demand: 'Medium',
-        remote: 'Good',
-        barrier: 'Medium-High',
-        skills: ['Unity', 'Unreal Engine', 'C#', 'C++', 'Game Design', '3D Modeling', 'Physics'],
-        detailedRoadmap: [
-            {
-                title: 'Programming Fundamentals',
-                duration: '3-4 months',
-                description: 'Master programming languages used in game development.',
-                skills: ['C#', 'C++', 'Object-Oriented Programming', 'Data Structures', 'Algorithms'],
-                resources: []
-            },
-            {
-                title: 'Game Engine Mastery',
-                duration: '4-5 months',
-                description: 'Learn popular game engines and development workflows.',
-                skills: ['Unity', 'Unreal Engine', 'Game Physics', 'Animation', 'Asset Management'],
-                resources: []
-            },
-            {
-                title: 'Game Design & Graphics',
-                duration: '3-4 months',
-                description: 'Understand game design principles and graphics programming.',
-                skills: ['Game Design', 'Level Design', 'Shaders', '3D Graphics', 'UI/UX for Games'],
-                resources: []
-            },
-            {
-                title: 'Specialization & Publishing',
-                duration: '2-4 months',
-                description: 'Choose a specialization and learn game publishing.',
-                skills: ['Mobile Games', 'VR/AR', 'Multiplayer', 'Game Analytics', 'Monetization'],
-                resources: []
-            }
-        ],
-        resources: []
-    },
-    {
-        id: 'ui-ux-designer',
-        title: 'UI/UX Designer',
-        category: 'design',
-        description: 'Design intuitive and beautiful user interfaces and experiences.',
-        detailedDescription: 'UI/UX Designers research user needs, create wireframes and prototypes, and design interfaces that provide excellent user experiences across digital products.',
-        icon: 'fas fa-paint-brush',
-        salary: {
-            india: '₹4-18 LPA',
-            usa: '$65-125K'
-        },
-        growth: 'Expected to grow 8% from 2020-2030',
-        timeline: '6-12 months to job-ready',
-        demand: 'High',
-        remote: 'Excellent',
-        barrier: 'Low-Medium',
-        skills: ['Figma', 'Adobe XD', 'Sketch', 'Prototyping', 'User Research', 'Information Architecture'],
-        detailedRoadmap: [
-            {
-                title: 'Design Fundamentals',
-                duration: '2-3 months',
-                description: 'Learn core design principles and theory.',
-                skills: ['Design Principles', 'Color Theory', 'Typography', 'Layout', 'Visual Hierarchy'],
-                resources: []
-            },
-            {
-                title: 'UX Research & Strategy',
-                duration: '2-3 months',
-                description: 'Master user research and experience strategy.',
-                skills: ['User Research', 'Personas', 'User Journey Mapping', 'Information Architecture', 'Wireframing'],
-                resources: []
-            },
-            {
-                title: 'UI Design & Prototyping',
-                duration: '2-3 months',
-                description: 'Create beautiful interfaces and interactive prototypes.',
-                skills: ['Figma', 'Adobe XD', 'Prototyping', 'Design Systems', 'Responsive Design'],
-                resources: []
-            },
-            {
-                title: 'Testing & Implementation',
-                duration: '1-2 months',
-                description: 'Learn to test designs and work with developers.',
-                skills: ['Usability Testing', 'A/B Testing', 'Design Handoff', 'HTML/CSS Basics'],
-                resources: []
-            }
-        ],
-        resources: []
-    },
-    {
-        id: 'cloud-architect',
-        title: 'Cloud Architect',
-        category: 'infrastructure',
-        description: 'Design and manage scalable cloud infrastructure solutions.',
-        detailedDescription: 'Cloud Architects design cloud computing strategies, oversee cloud adoption plans, and ensure scalable, secure, and cost-effective cloud infrastructure.',
-        icon: 'fas fa-cloud',
-        salary: {
-            india: '₹12-40 LPA',
-            usa: '$120-200K'
-        },
-        growth: 'Expected to grow 19% from 2020-2030',
-        timeline: '14-24 months to job-ready',
-        demand: 'Very High',
-        remote: 'Excellent',
-        barrier: 'High',
-        skills: ['AWS', 'Azure', 'GCP', 'Kubernetes', 'Terraform', 'Microservices', 'Security', 'Cost Optimization'],
-        detailedRoadmap: [
-            {
-                title: 'Cloud Fundamentals',
-                duration: '3-4 months',
-                description: 'Understand cloud computing concepts and major platforms.',
-                skills: ['Cloud Computing Basics', 'AWS/Azure/GCP', 'Virtualization', 'Networking'],
-                resources: []
-            },
-            {
-                title: 'Infrastructure as Code',
-                duration: '3-4 months',
-                description: 'Master infrastructure automation and management.',
-                skills: ['Terraform', 'CloudFormation', 'Ansible', 'Infrastructure Automation'],
-                resources: []
-            },
-            {
-                title: 'Architecture & Security',
-                duration: '4-5 months',
-                description: 'Design secure and scalable cloud architectures.',
-                skills: ['Solution Architecture', 'Security Best Practices', 'Compliance', 'Disaster Recovery'],
-                resources: []
-            },
-            {
-                title: 'Advanced Topics',
-                duration: '4-6 months',
-                description: 'Explore advanced cloud technologies and practices.',
-                skills: ['Serverless', 'Microservices', 'Cost Optimization', 'Multi-cloud', 'Edge Computing'],
-                resources: []
-            }
-        ],
-        resources: []
-    },
-    {
-        id: 'product-manager',
-        title: 'Product Manager',
-        category: 'emerging',
-        description: 'Guide product strategy and development from conception to launch.',
-        detailedDescription: 'Product Managers define product vision, strategy, and roadmaps. They work closely with engineering, design, and business teams to deliver successful products.',
-        icon: 'fas fa-lightbulb',
-        salary: {
-            india: '₹8-35 LPA',
-            usa: '$100-180K'
-        },
-        growth: 'Expected to grow 9% from 2020-2030',
-        timeline: '8-16 months to job-ready',
-        demand: 'High',
-        remote: 'Excellent',
-        barrier: 'Medium',
-        skills: ['Product Strategy', 'Market Research', 'Analytics', 'Agile', 'Wireframing', 'SQL', 'A/B Testing'],
-        detailedRoadmap: [
-            {
-                title: 'Product Fundamentals',
-                duration: '2-3 months',
-                description: 'Learn core product management concepts and methodologies.',
-                skills: ['Product Strategy', 'Market Research', 'User Stories', 'Roadmapping', 'Agile/Scrum'],
-                resources: []
-            },
-            {
-                title: 'Analytics & Data',
-                duration: '2-3 months',
-                description: 'Master data analysis and product metrics.',
-                skills: ['SQL', 'Analytics Tools', 'KPIs', 'A/B Testing', 'Data Interpretation'],
-                resources: []
-            },
-            {
-                title: 'Technical Skills',
-                duration: '2-3 months',
-                description: 'Develop technical understanding to work with engineering teams.',
-                skills: ['System Design Basics', 'APIs', 'Wireframing', 'Technical Documentation'],
-                resources: []
-            },
-            {
-                title: 'Leadership & Communication',
-                duration: '2-3 months',
-                description: 'Build leadership and stakeholder management skills.',
-                skills: ['Stakeholder Management', 'Presentation Skills', 'Negotiation', 'Team Leadership'],
-                resources: []
-            }
-        ],
-        resources: []
-    },
-    {
-        id: 'quantum-developer',
-        title: 'Quantum Developer',
-        category: 'emerging',
-        description: 'Develop quantum computing applications and algorithms.',
-        detailedDescription: 'Quantum Developers work on cutting-edge quantum computing technologies, developing quantum algorithms and applications for various industries.',
-        icon: 'fas fa-atom',
-        salary: {
-            india: '₹15-50 LPA',
-            usa: '$130-250K'
-        },
-        growth: 'Expected to grow 50%+ from 2020-2030',
-        timeline: '18-30 months to job-ready',
-        demand: 'Emerging',
-        remote: 'Good',
-        barrier: 'Very High',
-        skills: ['Quantum Mechanics', 'Linear Algebra', 'Python', 'Qiskit', 'Cirq', 'Quantum Algorithms'],
-        detailedRoadmap: [
-            {
-                title: 'Mathematical Foundations',
-                duration: '4-6 months',
-                description: 'Build strong mathematical foundation for quantum computing.',
-                skills: ['Linear Algebra', 'Complex Numbers', 'Probability', 'Quantum Mechanics Basics'],
-                resources: []
-            },
-            {
-                title: 'Quantum Programming',
-                duration: '4-6 months',
-                description: 'Learn quantum programming languages and frameworks.',
-                skills: ['Qiskit', 'Cirq', 'Q#', 'Quantum Circuits', 'Quantum Gates'],
-                resources: []
-            },
-            {
-                title: 'Quantum Algorithms',
-                duration: '4-6 months',
-                description: 'Master important quantum algorithms and their applications.',
-                skills: ['Shor\'s Algorithm', 'Grover\'s Algorithm', 'QAOA', 'VQE', 'Quantum ML'],
-                resources: []
-            },
-            {
-                title: 'Applications & Research',
-                duration: '6-8 months',
-                description: 'Apply quantum computing to real-world problems.',
-                skills: ['Quantum Cryptography', 'Quantum Optimization', 'Quantum Chemistry', 'Research Methods'],
-                resources: []
-            }
-        ],
-        resources: []
-    },
-    {
-        id: 'ar-vr-developer',
-        title: 'AR/VR Developer',
-        category: 'emerging',
-        description: 'Create immersive augmented and virtual reality experiences.',
-        detailedDescription: 'AR/VR Developers build immersive experiences using augmented reality and virtual reality technologies for gaming, education, training, and enterprise applications.',
-        icon: 'fas fa-vr-cardboard',
-        salary: {
-            india: '₹6-22 LPA',
-            usa: '$80-150K'
-        },
-        growth: 'Expected to grow 30% from 2020-2030',
-        timeline: '10-18 months to job-ready',
-        demand: 'Growing',
-        remote: 'Good',
-        barrier: 'High',
-        skills: ['Unity', 'Unreal Engine', 'C#', '3D Modeling', 'ARKit', 'ARCore', 'Oculus SDK'],
-        detailedRoadmap: [
-            {
-                title: '3D Development Basics',
-                duration: '3-4 months',
-                description: 'Learn 3D graphics and development fundamentals.',
-                skills: ['3D Mathematics', 'Unity', 'C#', '3D Modeling', 'Animation'],
-                resources: []
-            },
-            {
-                title: 'AR Development',
-                duration: '3-4 months',
-                description: 'Master augmented reality development.',
-                skills: ['ARKit', 'ARCore', 'ARFoundation', 'Computer Vision', 'SLAM'],
-                resources: []
-            },
-            {
-                title: 'VR Development',
-                duration: '3-4 months',
-                description: 'Build virtual reality experiences.',
-                skills: ['Oculus SDK', 'OpenVR', 'VR Interaction', 'Spatial Audio', 'Performance Optimization'],
-                resources: []
-            },
-            {
-                title: 'Advanced & Mixed Reality',
-                duration: '2-4 months',
-                description: 'Explore advanced topics and mixed reality.',
-                skills: ['Mixed Reality', 'Hand Tracking', 'Eye Tracking', 'Haptic Feedback', 'WebXR'],
-                resources: []
-            }
-        ],
-        resources: []
+        ]
     }
 ];
 
-// Export for use in other files
-if (typeof module !== 'undefined' && module.exports) {
-    module.exports = { careers, assessmentQuestions };
-}
+// Additional utility functions for data processing
+window.getCareerById = function(id) {
+    return window.careerData.find(career => career.id === id);
+};
+
+window.getCareersByCategory = function(category) {
+    if (category === 'all') {
+        return window.careerData;
+    }
+    return window.careerData.filter(career => 
+        career.category.toLowerCase().includes(category.toLowerCase()) ||
+        career.type?.toLowerCase() === category.toLowerCase()
+    );
+};
+
+window.searchCareers = function(query) {
+    const searchTerm = query.toLowerCase();
+    return window.careerData.filter(career =>
+        career.title.toLowerCase().includes(searchTerm) ||
+        career.description.toLowerCase().includes(searchTerm) ||
+        career.skills.some(skill => skill.toLowerCase().includes(searchTerm)) ||
+        career.keywords.some(keyword => keyword.toLowerCase().includes(searchTerm))
+    );
+};
+
+window.getPopularCareers = function(limit = 6) {
+    // Return careers with highest job growth
+    return window.careerData
+        .filter(career => career.jobGrowth === 'Very High' || career.jobGrowth === 'High')
+        .slice(0, limit);
+};
+
+window.getCareerStats = function() {
+    return {
+        total: window.careerData.length,
+        categories: [...new Set(window.careerData.map(c => c.category))].length,
+        avgTimeToLearn: "8-12 Months",
+        topGrowthField: "Data & AI"
+    };
+}; 13% from 2020-2030, faster than average",
+        skills: ["JavaScript", "React", "Node.js", "Python", "SQL", "Git", "AWS"],
+        keywords: ["web development", "javascript", "react", "node", "full stack", "frontend", "backend"],
+        roadmap: [
+            "Learn HTML, CSS, and JavaScript fundamentals",
+            "Master a frontend framework (React, Vue, or Angular)",
+            "Learn backend development with Node.js or Python",
+            "Understand databases (SQL and NoSQL)",
+            "Learn version control with Git",
+            "Deploy applications using cloud services",
+            "Build portfolio projects and contribute to open source"
+        ],
+        resources: [
+            {
+                name: "FreeCodeCamp Full Stack Course",
+                url: "https://www.freecodecamp.org/learn/",
+                icon: "fas fa-graduation-cap",
+                description: "Comprehensive free course covering full stack development"
+            },
+            {
+                name: "The Odin Project",
+                url: "https://www.theodinproject.com/",
+                icon: "fas fa-book-open",
+                description: "Complete web development curriculum with projects"
+            },
+            {
+                name: "MDN Web Docs",
+                url: "https://developer.mozilla.org/",
+                icon: "fas fa-globe",
+                description: "Comprehensive web development documentation"
+            }
+        ]
+    },
+    {
+        id: "machine-learning-engineer",
+        title: "Machine Learning Engineer",
+        category: "Data & AI",
+        type: "data",
+        icon: "fas fa-brain",
+        description: "Design and implement machine learning systems and algorithms. Bridge the gap between data science research and production systems.",
+        difficulty: "Hard",
+        timeToLearn: "12-18 Months",
+        jobGrowth: "Very High",
+        salaryIndia: "₹8-25 LPA",
+        salaryUSA: "$90-180K",
+        growth: "Expected to grow 22% from 2020-2030, much faster than average",
+        skills: ["Python", "TensorFlow", "PyTorch", "Scikit-learn", "Statistics", "Linear Algebra", "AWS"],
+        keywords: ["machine learning", "ai", "python", "tensorflow", "data science", "algorithms", "neural networks"],
+        roadmap: [
+            "Learn Python programming and data structures",
+            "Master statistics and linear algebra",
+            "Learn data manipulation with Pandas and NumPy",
+            "Understand machine learning algorithms and theory",
+            "Practice with Scikit-learn and TensorFlow/PyTorch",
+            "Learn MLOps and model deployment",
+            "Build ML projects and participate in competitions"
+        ],
+        resources: [
+            {
+                name: "Coursera Machine Learning Course",
+                url: "https://www.coursera.org/learn/machine-learning",
+                icon: "fas fa-video",
+                description: "Andrew Ng's famous machine learning course"
+            },
+            {
+                name: "Fast.ai Practical Deep Learning",
+                url: "https://www.fast.ai/",
+                icon: "fas fa-rocket",
+                description: "Practical deep learning for coders"
+            },
+            {
+                name: "Kaggle Learn",
+                url: "https://www.kaggle.com/learn",
+                icon: "fas fa-chart-line",
+                description: "Free micro-courses on ML topics"
+            }
+        ]
+    },
+    {
+        id: "frontend-developer",
+        title: "Frontend Developer",
+        category: "Development",
+        type: "development",
+        icon: "fas fa-palette",
+        description: "Create engaging user interfaces and experiences for web applications. Focus on what users see and interact with in their browsers.",
+        difficulty: "Easy-Medium",
+        timeToLearn: "6-10 Months",
+        jobGrowth: "High",
+        salaryIndia: "₹3-12 LPA",
+        salaryUSA: "$60-120K",
+        growth: "Expected to grow 8% from 2020-2030, faster than average",
+        skills: ["HTML", "CSS", "JavaScript", "React", "Vue.js", "Responsive Design", "TypeScript"],
+        keywords: ["frontend", "ui", "ux", "javascript", "react", "css", "html", "responsive"],
+        roadmap: [
+            "Master HTML and CSS fundamentals",
+            "Learn JavaScript and DOM manipulation",
+            "Understand responsive design and CSS frameworks",
+            "Learn a modern framework (React, Vue, or Angular)",
+            "Practice with build tools (Webpack, Vite)",
+            "Learn TypeScript and testing frameworks",
+            "Build portfolio projects and practice UI/UX principles"
+        ],
+        resources: [
+            {
+                name: "MDN Frontend Developer Path",
+                url: "https://developer.mozilla.org/en-US/docs/Learn/Front-end_web_developer",
+                icon: "fas fa-route",
+                description: "Complete frontend development learning path"
+            },
+            {
+                name: "Frontend Mentor",
+                url: "https://www.frontendmentor.io/",
+                icon: "fas fa-code",
+                description: "Real-world frontend challenges"
+            },
+            {
+                name: "CSS-Tricks",
+                url: "https://css-tricks.com/",
+                icon: "fas fa-paint-brush",
+                description: "CSS tips, tricks, and techniques"
+            }
+        ]
+    },
+    {
+        id: "backend-developer",
+        title: "Backend Developer",
+        category: "Development",
+        type: "development",
+        icon: "fas fa-server",
+        description: "Build and maintain server-side applications, databases, and APIs. Handle the logic that powers web applications behind the scenes.",
+        difficulty: "Medium",
+        timeToLearn: "8-12 Months",
+        jobGrowth: "High",
+        salaryIndia: "₹4-18 LPA",
+        salaryUSA: "$70-140K",
+        growth: "Expected to grow 13% from 2020-2030, faster than average",
+        skills: ["Python", "Java", "Node.js", "SQL", "NoSQL", "REST APIs", "Docker"],
+        keywords: ["backend", "api", "database", "server", "python", "java", "node.js", "sql"],
+        roadmap: [
+            "Choose a backend language (Python, Java, or Node.js)",
+            "Learn database design and SQL",
+            "Understand REST APIs and HTTP protocols",
+            "Learn a web framework (Django, Spring, Express)",
+            "Practice with NoSQL databases",
+            "Learn containerization with Docker",
+            "Build and deploy backend projects"
+        ],
+        resources: [
+            {
+                name: "Django for Everybody",
+                url: "https://www.coursera.org/specializations/django",
+                icon: "fab fa-python",
+                description: "Complete Django web development course"
+            },
+            {
+                name: "Node.js Complete Guide",
+                url: "https://nodejs.dev/learn",
+                icon: "fab fa-node-js",
+                description: "Official Node.js learning resource"
+            },
+            {
+                name: "Database Design Course",
+                url: "https://www.freecodecamp.org/learn/relational-database/",
+                icon: "fas fa-database",
+                description: "Learn relational database design"
+            }
+        ]
+    },
+    {
+        id: "mobile-developer",
+        title: "Mobile Developer",
+        category: "Development",
+        type: "development",
+        icon: "fas fa-mobile-alt",
+        description: "Create native and cross-platform mobile applications for iOS and Android devices. Build apps that millions of users can access on their phones.",
+        difficulty: "Medium",
+        timeToLearn: "8-14 Months",
+        jobGrowth: "High",
+        salaryIndia: "₹4-16 LPA",
+        salaryUSA: "$75-135K",
+        growth: "Expected to grow

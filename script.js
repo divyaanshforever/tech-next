@@ -445,4 +445,35 @@ document.addEventListener('visibilitychange', () => {
     if (document.hidden) {
         document.title = '👋 Come back to TechNext!';
     } else {
-        document.title = 'TechNext - Discover Your Tech Career Path
+        document.title = 'TechNext - Discover Your Tech Career Path';
+    }
+});
+
+// Service Worker Registration (Optional - for PWA features)
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+        // Uncomment if you want to add service worker
+        // navigator.serviceWorker.register('/sw.js')
+        //     .then(registration => console.log('SW registered'))
+        //     .catch(error => console.log('SW registration failed'));
+    });
+}
+
+// Error Handling
+window.addEventListener('error', (e) => {
+    console.error('Application Error:', e.error);
+    // Could add error reporting here
+});
+
+// Performance Monitoring
+window.addEventListener('load', () => {
+    if ('performance' in window) {
+        const loadTime = performance.timing.loadEventEnd - performance.timing.navigationStart;
+        console.log(`Page loaded in ${loadTime}ms`);
+    }
+});
+
+// Export for module systems
+if (typeof module !== 'undefined' && module.exports) {
+    module.exports = TechNextApp;
+}

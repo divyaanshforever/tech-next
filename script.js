@@ -1,28 +1,61 @@
-// Main application JavaScript
+// Fixed TechNext Application JavaScript
+console.log('Script loading...');
+
+// Ensure careersData is available
+if (typeof careersData === 'undefined') {
+    console.error('careersData is not defined! Make sure data.js is loaded first.');
+}
+
 class TechNextApp {
     constructor() {
+        console.log('TechNextApp constructor called');
         this.currentTheme = 'light';
         this.isLoading = true;
         this.activeModal = null;
         
+        // Bind methods to maintain context
+        this.handleSearch = this.handleSearch.bind(this);
+        this.toggleTheme = this.toggleTheme.bind(this);
+        this.closeModal = this.closeModal.bind(this);
+        
+        // Initialize immediately
         this.init();
     }
 
     init() {
-        this.setupEventListeners();
+        console.log('Initializing TechNext App...');
+        
+        // Load theme first
         this.loadTheme();
+        
+        // Start loading simulation
         this.simulateLoading();
-        this.renderCareers();
-        this.setupIntersectionObserver();
+        
+        // Setup event listeners
+        this.setupEventListeners();
+        
+        // Render careers data
+        setTimeout(() => {
+            this.renderCareers();
+        }, 100);
     }
 
-    // Loading Screen Management
+    // Loading Screen Management - FIXED
     simulateLoading() {
+        console.log('Starting loading simulation...');
+        
         const loadingScreen = document.getElementById('loading-screen');
         const mainApp = document.getElementById('main-app');
 
-        // Simulate loading time (2 seconds)
+        if (!loadingScreen || !mainApp) {
+            console.error('Loading elements not found!');
+            return;
+        }
+
+        // Shorter loading time for better UX
         setTimeout(() => {
+            console.log('Hiding loading screen...');
+            
             loadingScreen.classList.add('fade-out');
             
             setTimeout(() => {
@@ -30,16 +63,23 @@ class TechNextApp {
                 mainApp.style.display = 'block';
                 this.isLoading = false;
                 
+                console.log('App loaded successfully!');
+                
                 // Trigger animations after loading
                 this.triggerEntryAnimations();
-            }, 500);
-        }, 2000);
+            }, 300); // Reduced from 500ms
+        }, 1500); // Reduced from 2000ms
     }
 
     // Theme Management
     loadTheme() {
-        const savedTheme = localStorage.getItem('techNext-theme') || 'light';
-        this.setTheme(savedTheme);
+        try {
+            const savedTheme = localStorage.getItem('techNext-theme') || 'light';
+            this.setTheme(savedTheme);
+        } catch (error) {
+            console.warn('Could not load theme from localStorage:', error);
+            this.setTheme('light');
+        }
     }
 
     setTheme(theme) {
@@ -47,35 +87,51 @@ class TechNextApp {
         document.documentElement.setAttribute('data-theme', theme);
         
         const themeToggle = document.getElementById('theme-toggle');
-        const icon = themeToggle.querySelector('i');
-        
-        if (theme === 'dark') {
-            icon.className = 'fas fa-sun';
-            themeToggle.title = 'Switch to light mode';
-        } else {
-            icon.className = 'fas fa-moon';
-            themeToggle.title = 'Switch to dark mode';
+        if (themeToggle) {
+            const icon = themeToggle.querySelector('i');
+            if (icon) {
+                if (theme === 'dark') {
+                    icon.className = 'fas fa-sun';
+                    themeToggle.title = 'Switch to light mode';
+                } else {
+                    icon.className = 'fas fa-moon';
+                    themeToggle.title = 'Switch to dark mode';
+                }
+            }
         }
         
-        localStorage.setItem('techNext-theme', theme);
+        try {
+            localStorage.setItem('techNext-theme', theme);
+        } catch (error) {
+            console.warn('Could not save theme to localStorage:', error);
+        }
     }
 
     toggleTheme() {
+        console.log('Toggling theme...');
         const newTheme = this.currentTheme === 'light' ? 'dark' : 'light';
         this.setTheme(newTheme);
     }
 
-    // Event Listeners
+    // Event Listeners - FIXED
     setupEventListeners() {
+        console.log('Setting up event listeners...');
+        
         // Theme toggle
-        document.getElementById('theme-toggle')?.addEventListener('click', () => {
-            this.toggleTheme();
-        });
+        const themeToggle = document.getElementById('theme-toggle');
+        if (themeToggle) {
+            themeToggle.addEventListener('click', this.toggleTheme);
+            console.log('Theme toggle listener added');
+        }
 
         // Search functionality
-        document.getElementById('search-input')?.addEventListener('input', (e) => {
-            this.handleSearch(e.target.value);
-        });
+        const searchInput = document.getElementById('search-input');
+        if (searchInput) {
+            searchInput.addEventListener('input', (e) => {
+                this.handleSearch(e.target.value);
+            });
+            console.log('Search listener added');
+        }
 
         // Navigation
         document.querySelectorAll('.nav-link').forEach(link => {
@@ -87,16 +143,20 @@ class TechNextApp {
         });
 
         // Modal close
-        document.getElementById('modal-close')?.addEventListener('click', () => {
-            this.closeModal();
-        });
+        const modalClose = document.getElementById('modal-close');
+        if (modalClose) {
+            modalClose.addEventListener('click', this.closeModal);
+        }
 
         // Modal backdrop close
-        document.getElementById('career-modal')?.addEventListener('click', (e) => {
-            if (e.target.id === 'career-modal') {
-                this.closeModal();
-            }
-        });
+        const careerModal = document.getElementById('career-modal');
+        if (careerModal) {
+            careerModal.addEventListener('click', (e) => {
+                if (e.target.id === 'career-modal') {
+                    this.closeModal();
+                }
+            });
+        }
 
         // Keyboard navigation
         document.addEventListener('keydown', (e) => {
@@ -112,14 +172,7 @@ class TechNextApp {
             });
         });
 
-        // Smooth scroll for buttons
-        document.querySelectorAll('[onclick*="scrollToSection"]').forEach(button => {
-            button.addEventListener('click', (e) => {
-                e.preventDefault();
-                const section = button.getAttribute('onclick').match(/'([^']+)'/)[1];
-                this.scrollToSection(section);
-            });
-        });
+        console.log('Event listeners setup complete');
     }
 
     // Navigation
@@ -129,16 +182,22 @@ class TechNextApp {
             link.classList.remove('active');
         });
         
-        document.querySelector(`[href="${target}"]`)?.classList.add('active');
+        const targetLink = document.querySelector(`[href="${target}"]`);
+        if (targetLink) {
+            targetLink.classList.add('active');
+        }
         
         // Scroll to section
-        this.scrollToSection(target.substring(1));
+        if (target) {
+            this.scrollToSection(target.substring(1));
+        }
     }
 
     scrollToSection(sectionId) {
         const section = document.getElementById(sectionId);
         if (section) {
-            const headerHeight = document.querySelector('.header').offsetHeight;
+            const header = document.querySelector('.header');
+            const headerHeight = header ? header.offsetHeight : 80;
             const targetPosition = section.offsetTop - headerHeight - 20;
             
             window.scrollTo({
@@ -151,6 +210,8 @@ class TechNextApp {
     // Search Functionality
     handleSearch(query) {
         const careersGrid = document.getElementById('careers-grid');
+        if (!careersGrid) return;
+        
         const cards = careersGrid.querySelectorAll('.career-card');
         
         if (!query.trim()) {
@@ -163,37 +224,56 @@ class TechNextApp {
         const searchTerm = query.toLowerCase();
         
         cards.forEach(card => {
-            const title = card.querySelector('.career-title').textContent.toLowerCase();
-            const description = card.querySelector('.career-description').textContent.toLowerCase();
-            const tags = Array.from(card.querySelectorAll('.career-tag'))
-                .map(tag => tag.textContent.toLowerCase());
+            const title = card.querySelector('.career-title');
+            const description = card.querySelector('.career-description');
+            const tags = card.querySelectorAll('.career-tag');
             
-            const matches = title.includes(searchTerm) || 
-                           description.includes(searchTerm) ||
-                           tags.some(tag => tag.includes(searchTerm));
+            const titleText = title ? title.textContent.toLowerCase() : '';
+            const descriptionText = description ? description.textContent.toLowerCase() : '';
+            const tagTexts = Array.from(tags).map(tag => tag.textContent.toLowerCase());
+            
+            const matches = titleText.includes(searchTerm) || 
+                           descriptionText.includes(searchTerm) ||
+                           tagTexts.some(tag => tag.includes(searchTerm));
             
             card.style.display = matches ? 'block' : 'none';
         });
     }
 
-    // Career Cards Rendering
+    // Career Cards Rendering - FIXED
     renderCareers() {
+        console.log('Rendering careers...');
+        
         const careersGrid = document.getElementById('careers-grid');
         
-        if (!careersGrid || !window.careersData) {
-            console.error('Careers grid or data not found');
+        if (!careersGrid) {
+            console.error('Careers grid element not found');
             return;
         }
 
+        // Check if careersData exists
+        if (typeof careersData === 'undefined') {
+            console.error('careersData is not defined');
+            careersGrid.innerHTML = '<p style="text-align: center; color: var(--text-muted);">Career data not available. Please check data.js file.</p>';
+            return;
+        }
+
+        console.log('Career data found:', Object.keys(careersData));
         careersGrid.innerHTML = '';
 
-        Object.entries(window.careersData).forEach(([key, career]) => {
-            const card = this.createCareerCard(key, career);
-            careersGrid.appendChild(card);
-        });
+        try {
+            Object.entries(careersData).forEach(([key, career]) => {
+                const card = this.createCareerCard(key, career);
+                careersGrid.appendChild(card);
+            });
 
-        // Add stagger animation class
-        careersGrid.classList.add('stagger-animation');
+            // Add stagger animation class
+            careersGrid.classList.add('stagger-animation');
+            console.log(`Rendered ${Object.keys(careersData).length} career cards`);
+        } catch (error) {
+            console.error('Error rendering careers:', error);
+            careersGrid.innerHTML = '<p style="text-align: center; color: var(--text-muted);">Error loading career data.</p>';
+        }
     }
 
     createCareerCard(key, career) {
@@ -201,18 +281,24 @@ class TechNextApp {
         card.className = 'career-card';
         card.setAttribute('data-career', key);
         
+        // Safely extract salary and growth info
+        const salaryParts = career.salary ? career.salary.split(',') : ['Salary info not available'];
+        const growthParts = career.growth ? career.growth.split(' ') : ['Growth', 'info'];
+        const displaySalary = salaryParts[0] || 'Salary TBD';
+        const displayGrowth = `${growthParts[0] || 'High'} ${growthParts[1] || 'demand'}`;
+        
         card.innerHTML = `
             <div class="career-icon">
-                <i class="${career.icon}"></i>
+                <i class="${career.icon || 'fas fa-code'}"></i>
             </div>
-            <h3 class="career-title">${career.title}</h3>
-            <p class="career-description">${career.description}</p>
+            <h3 class="career-title">${career.title || 'Career Title'}</h3>
+            <p class="career-description">${career.description || 'Career description not available.'}</p>
             <div class="career-meta">
-                <span class="career-salary">${career.salary.split(',')[0]}</span>
-                <span class="career-growth">${career.growth.split(' ')[0]} ${career.growth.split(' ')[1]}</span>
+                <span class="career-salary">${displaySalary}</span>
+                <span class="career-growth">${displayGrowth}</span>
             </div>
             <div class="career-tags">
-                ${career.tags.map(tag => `<span class="career-tag">${tag}</span>`).join('')}
+                ${(career.tags || []).map(tag => `<span class="career-tag">${tag}</span>`).join('')}
             </div>
         `;
 
@@ -225,17 +311,26 @@ class TechNextApp {
 
     // Modal Management
     openCareerModal(key, career) {
+        console.log('Opening modal for:', career.title);
+        
         const modal = document.getElementById('career-modal');
+        if (!modal) return;
+        
         this.activeModal = key;
         
         // Update modal content
-        document.getElementById('modal-title').textContent = career.title;
+        const modalTitle = document.getElementById('modal-title');
+        if (modalTitle) {
+            modalTitle.textContent = career.title || 'Career Title';
+        }
         
         // Update overview tab
-        document.getElementById('modal-description').textContent = career.description;
-        this.renderSkills(career.skills);
+        const modalDescription = document.getElementById('modal-description');
+        if (modalDescription) {
+            modalDescription.textContent = career.description || 'Description not available.';
+        }
         
-        // Update other tabs
+        this.renderSkills(career.skills);
         this.renderRoadmap(career.roadmap);
         this.renderResources(career.resources);
         this.renderSalary(career.salaryDetails);
@@ -244,24 +339,25 @@ class TechNextApp {
         modal.classList.add('active');
         document.body.style.overflow = 'hidden';
         
-        // Focus management
-        modal.focus();
+        // Reset to first tab
+        this.switchTab('overview');
     }
 
     closeModal() {
         const modal = document.getElementById('career-modal');
-        modal.classList.remove('active');
-        document.body.style.overflow = '';
-        this.activeModal = null;
-        
-        // Reset to first tab
-        this.switchTab('overview');
+        if (modal) {
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+            this.activeModal = null;
+        }
     }
 
     // Tab Management
     handleTabClick(button) {
         const tabName = button.getAttribute('data-tab');
-        this.switchTab(tabName);
+        if (tabName) {
+            this.switchTab(tabName);
+        }
     }
 
     switchTab(tabName) {
@@ -269,13 +365,19 @@ class TechNextApp {
         document.querySelectorAll('.tab-button').forEach(btn => {
             btn.classList.remove('active');
         });
-        document.querySelector(`[data-tab="${tabName}"]`)?.classList.add('active');
+        const activeTab = document.querySelector(`[data-tab="${tabName}"]`);
+        if (activeTab) {
+            activeTab.classList.add('active');
+        }
         
         // Update tab panes
         document.querySelectorAll('.tab-pane').forEach(pane => {
             pane.classList.remove('active');
         });
-        document.getElementById(`${tabName}-tab`)?.classList.add('active');
+        const activePane = document.getElementById(`${tabName}-tab`);
+        if (activePane) {
+            activePane.classList.add('active');
+        }
     }
 
     // Modal Content Rendering
@@ -333,29 +435,33 @@ class TechNextApp {
         if (!salaryDetails || !salaryContainer) return;
         
         salaryContainer.innerHTML = `
-            <div class="salary-card">
-                <h4>🇮🇳 India Market</h4>
-                <div class="salary-amount">${salaryDetails.india.entry}</div>
-                <p class="salary-note">Entry Level</p>
-                <div class="salary-amount">${salaryDetails.india.mid}</div>
-                <p class="salary-note">Mid Level</p>
-                <div class="salary-amount">${salaryDetails.india.senior}</div>
-                <p class="salary-note">Senior Level</p>
-            </div>
-            <div class="salary-card">
-                <h4>🇺🇸 USA Market</h4>
-                <div class="salary-amount">${salaryDetails.usa.entry}</div>
-                <p class="salary-note">Entry Level</p>
-                <div class="salary-amount">${salaryDetails.usa.mid}</div>
-                <p class="salary-note">Mid Level</p>
-                <div class="salary-amount">${salaryDetails.usa.senior}</div>
-                <p class="salary-note">Senior Level</p>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-xl);">
+                <div class="salary-card">
+                    <h4>🇮🇳 India Market</h4>
+                    <div class="salary-amount">${salaryDetails.india.entry}</div>
+                    <p class="salary-note">Entry Level</p>
+                    <div class="salary-amount">${salaryDetails.india.mid}</div>
+                    <p class="salary-note">Mid Level</p>
+                    <div class="salary-amount">${salaryDetails.india.senior}</div>
+                    <p class="salary-note">Senior Level</p>
+                </div>
+                <div class="salary-card">
+                    <h4>🇺🇸 USA Market</h4>
+                    <div class="salary-amount">${salaryDetails.usa.entry}</div>
+                    <p class="salary-note">Entry Level</p>
+                    <div class="salary-amount">${salaryDetails.usa.mid}</div>
+                    <p class="salary-note">Mid Level</p>
+                    <div class="salary-amount">${salaryDetails.usa.senior}</div>
+                    <p class="salary-note">Senior Level</p>
+                </div>
             </div>
         `;
     }
 
     // Animation Triggers
     triggerEntryAnimations() {
+        console.log('Triggering entry animations...');
+        
         // Hero section animation
         const heroContent = document.querySelector('.hero-content');
         if (heroContent) {
@@ -370,55 +476,7 @@ class TechNextApp {
                     card.classList.add('slide-up');
                 }, index * 100);
             });
-        }, 500);
-    }
-
-    // Intersection Observer for scroll animations
-    setupIntersectionObserver() {
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('fade-in');
-                }
-            });
-        }, observerOptions);
-
-        // Observe sections
-        document.querySelectorAll('section').forEach(section => {
-            observer.observe(section);
-        });
-    }
-
-    // Utility Functions
-    debounce(func, wait) {
-        let timeout;
-        return function executedFunction(...args) {
-            const later = () => {
-                clearTimeout(timeout);
-                func(...args);
-            };
-            clearTimeout(timeout);
-            timeout = setTimeout(later, wait);
-        };
-    }
-
-    // Public API
-    scrollToSection(sectionId) {
-        const section = document.getElementById(sectionId);
-        if (section) {
-            const headerHeight = document.querySelector('.header').offsetHeight;
-            const targetPosition = section.offsetTop - headerHeight - 20;
-            
-            window.scrollTo({
-                top: targetPosition,
-                behavior: 'smooth'
-            });
-        }
+        }, 300);
     }
 }
 
@@ -431,49 +489,48 @@ function scrollToSection(sectionId) {
 
 // Initialize app when DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
-    // Make careers data available globally
-    window.careersData = careersData;
+    console.log('DOM Content Loaded');
+    
+    // Check if careersData exists
+    if (typeof careersData === 'undefined') {
+        console.error('careersData not found! Make sure data.js is loaded before script.js');
+        // Try to show error message
+        setTimeout(() => {
+            const loadingScreen = document.getElementById('loading-screen');
+            const mainApp = document.getElementById('main-app');
+            
+            if (loadingScreen) loadingScreen.style.display = 'none';
+            if (mainApp) {
+                mainApp.style.display = 'block';
+                mainApp.innerHTML = `
+                    <div style="display: flex; align-items: center; justify-content: center; min-height: 100vh; text-align: center; padding: 2rem;">
+                        <div>
+                            <h2 style="color: var(--text-primary); margin-bottom: 1rem;">Data Loading Error</h2>
+                            <p style="color: var(--text-secondary);">Please make sure data.js is loaded properly.</p>
+                            <button onclick="location.reload()" style="margin-top: 1rem; padding: 0.5rem 1rem; background: var(--primary); color: white; border: none; border-radius: 0.5rem; cursor: pointer;">Reload Page</button>
+                        </div>
+                    </div>
+                `;
+            }
+        }, 2000);
+        return;
+    }
     
     // Initialize the app
+    console.log('Initializing TechNext App...');
     window.techNextApp = new TechNextApp();
     
     console.log('TechNext Application Initialized Successfully! 🚀');
 });
 
-// Handle page visibility changes
-document.addEventListener('visibilitychange', () => {
-    if (document.hidden) {
-        document.title = '👋 Come back to TechNext!';
-    } else {
-        document.title = 'TechNext - Discover Your Tech Career Path';
-    }
+// Handle page load
+window.addEventListener('load', () => {
+    console.log('Window loaded');
 });
-
-// Service Worker Registration (Optional - for PWA features)
-if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-        // Uncomment if you want to add service worker
-        // navigator.serviceWorker.register('/sw.js')
-        //     .then(registration => console.log('SW registered'))
-        //     .catch(error => console.log('SW registration failed'));
-    });
-}
 
 // Error Handling
 window.addEventListener('error', (e) => {
     console.error('Application Error:', e.error);
-    // Could add error reporting here
 });
 
-// Performance Monitoring
-window.addEventListener('load', () => {
-    if ('performance' in window) {
-        const loadTime = performance.timing.loadEventEnd - performance.timing.navigationStart;
-        console.log(`Page loaded in ${loadTime}ms`);
-    }
-});
-
-// Export for module systems
-if (typeof module !== 'undefined' && module.exports) {
-    module.exports = TechNextApp;
-}
+console.log('Script loaded successfully');

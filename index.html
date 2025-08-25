@@ -3,243 +3,129 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TechNext - Discover Your Tech Career Path</title>
-    <meta name="description" content="Explore career paths, understand market trends, and access curated learning resources for tech professionals.">
+    <title>TechNext - Your Gateway to Technology Careers</title>
+    <meta name="description" content="Discover your path in technology with curated roadmaps, salary insights, and premium learning resources">
     
-    <!-- Google Fonts -->
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <!-- Custom Styles -->
+    <!-- Stylesheet -->
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Loading Screen -->
-    <div id="loading-screen" class="loading-screen">
-        <div class="loading-content">
-            <div class="loading-logo">
-                <i class="fas fa-code"></i>
-                <h2>TechNext</h2>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-rocket"></i>
+                <span>TechNext</span>
             </div>
-            <div class="loading-spinner"></div>
-            <p>Loading your tech journey...</p>
-        </div>
-    </div>
-
-    <!-- Main Application -->
-    <div id="main-app" class="main-app" style="display: none;">
-        <!-- Header -->
-        <header class="header">
-            <div class="container">
-                <div class="header-content">
-                    <div class="logo">
-                        <i class="fas fa-code"></i>
-                        <span>TechNext</span>
-                    </div>
-                    <nav class="nav">
-                        <a href="#home" class="nav-link active">Home</a>
-                        <a href="#careers" class="nav-link">Careers</a>
-                        <a href="#about" class="nav-link">About</a>
-                    </nav>
-                    <div class="header-actions">
-                        <button id="theme-toggle" class="theme-toggle" title="Toggle theme">
-                            <i class="fas fa-moon"></i>
-                        </button>
-                        <div class="search-box">
-                            <input type="text" id="search-input" placeholder="Search careers..." class="search-input">
-                            <i class="fas fa-search search-icon"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </header>
-
-        <!-- Hero Section -->
-        <section id="home" class="hero">
-            <div class="hero-background">
-                <div class="floating-shape shape-1"></div>
-                <div class="floating-shape shape-2"></div>
-                <div class="floating-shape shape-3"></div>
-            </div>
-            <div class="container">
-                <div class="hero-content">
-                    <h1 class="hero-title">
-                        Discover Your Path in
-                        <span class="gradient-text">Technology</span>
-                    </h1>
-                    <p class="hero-description">
-                        Explore career paths, understand market trends, and access curated learning resources 
-                        to accelerate your journey in the tech industry.
-                    </p>
-                    <div class="hero-actions">
-                        <button class="btn btn-primary" onclick="scrollToSection('careers')">
-                            <i class="fas fa-rocket"></i>
-                            Explore Careers
-                        </button>
-                        <button class="btn btn-secondary">
-                            <i class="fas fa-play"></i>
-                            Watch Demo
-                        </button>
-                    </div>
-                    <div class="hero-stats">
-                        <div class="stat">
-                            <div class="stat-number">12+</div>
-                            <div class="stat-label">Career Paths</div>
-                        </div>
-                        <div class="stat">
-                            <div class="stat-number">500+</div>
-                            <div class="stat-label">Resources</div>
-                        </div>
-                        <div class="stat">
-                            <div class="stat-number">100%</div>
-                            <div class="stat-label">Free Access</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Careers Section -->
-        <section id="careers" class="careers">
-            <div class="container">
-                <div class="section-header">
-                    <h2 class="section-title">Explore Tech Career Paths</h2>
-                    <p class="section-description">
-                        Choose from a wide range of technology career paths, each with detailed roadmaps, 
-                        salary insights, and curated learning resources.
-                    </p>
-                </div>
-                <div class="careers-grid" id="careers-grid">
-                    <!-- Career cards will be populated by JavaScript -->
-                </div>
-            </div>
-        </section>
-
-        <!-- About Section -->
-        <section id="about" class="about">
-            <div class="container">
-                <div class="about-content">
-                    <div class="about-text">
-                        <h2>About TechNext</h2>
-                        <p>
-                            TechNext is your comprehensive guide to navigating the ever-evolving technology landscape. 
-                            We provide curated career paths, real-world insights, and premium learning resources 
-                            to help you make informed decisions about your tech career.
-                        </p>
-                        <div class="features">
-                            <div class="feature">
-                                <i class="fas fa-chart-line"></i>
-                                <div>
-                                    <h4>Market Insights</h4>
-                                    <p>Stay updated with the latest salary trends and market demands.</p>
-                                </div>
-                            </div>
-                            <div class="feature">
-                                <i class="fas fa-road"></i>
-                                <div>
-                                    <h4>Learning Roadmaps</h4>
-                                    <p>Step-by-step guides to master your chosen career path.</p>
-                                </div>
-                            </div>
-                            <div class="feature">
-                                <i class="fas fa-users"></i>
-                                <div>
-                                    <h4>Community Driven</h4>
-                                    <p>Built by the community, for the community.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="about-visual">
-                        <div class="about-card">
-                            <i class="fas fa-code"></i>
-                            <h3>Built with Modern Web Technologies</h3>
-                            <p>HTML5, CSS3, JavaScript ES6+</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Footer -->
-        <footer class="footer">
-            <div class="container">
-                <div class="footer-content">
-                    <div class="footer-section">
-                        <div class="footer-logo">
-                            <i class="fas fa-code"></i>
-                            <span>TechNext</span>
-                        </div>
-                        <p>Empowering the next generation of tech professionals.</p>
-                    </div>
-                    <div class="footer-section">
-                        <h4>Quick Links</h4>
-                        <ul>
-                            <li><a href="#home">Home</a></li>
-                            <li><a href="#careers">Careers</a></li>
-                            <li><a href="#about">About</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-section">
-                        <h4>Resources</h4>
-                        <ul>
-                            <li><a href="#">Career Guide</a></li>
-                            <li><a href="#">Salary Report</a></li>
-                            <li><a href="#">Learning Paths</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-section">
-                        <h4>Connect</h4>
-                        <div class="social-links">
-                            <a href="#" class="social-link"><i class="fab fa-github"></i></a>
-                            <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
-                            <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="footer-bottom">
-                    <p>&copy; 2024 TechNext. Built with ❤️ for the tech community.</p>
-                </div>
-            </div>
-        </footer>
-    </div>
-
-    <!-- Career Modal -->
-    <div id="career-modal" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2 id="modal-title"></h2>
-                <button class="modal-close" id="modal-close">
-                    <i class="fas fa-times"></i>
+            <div class="nav-actions">
+                <button class="theme-toggle" id="themeToggle">
+                    <i class="fas fa-moon" id="themeIcon"></i>
+                </button>
+                <button class="search-toggle" id="searchToggle">
+                    <i class="fas fa-search"></i>
                 </button>
             </div>
-            <div class="modal-body">
-                <div class="modal-tabs">
-                    <button class="tab-button active" data-tab="overview">Overview</button>
-                    <button class="tab-button" data-tab="roadmap">Roadmap</button>
-                    <button class="tab-button" data-tab="resources">Resources</button>
-                    <button class="tab-button" data-tab="salary">Salary</button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="hero-background">
+            <div class="floating-shapes">
+                <div class="shape shape-1"></div>
+                <div class="shape shape-2"></div>
+                <div class="shape shape-3"></div>
+                <div class="shape shape-4"></div>
+            </div>
+        </div>
+        
+        <div class="hero-content">
+            <h1 class="hero-title">
+                Discover Your Path in
+                <span class="gradient-text">Technology</span>
+            </h1>
+            <p class="hero-description">
+                Explore curated career roadmaps, understand salary trends, and access premium learning resources to accelerate your tech journey.
+            </p>
+            
+            <!-- Search Bar -->
+            <div class="search-container" id="searchContainer">
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="searchInput" placeholder="Search career paths, skills, or technologies...">
+                    <button class="search-clear" id="searchClear">
+                        <i class="fas fa-times"></i>
+                    </button>
                 </div>
-                <div class="tab-content">
-                    <div id="overview-tab" class="tab-pane active">
-                        <p id="modal-description"></p>
-                        <div id="modal-skills" class="skills-section"></div>
-                    </div>
-                    <div id="roadmap-tab" class="tab-pane">
-                        <div id="modal-roadmap" class="roadmap-section"></div>
-                    </div>
-                    <div id="resources-tab" class="tab-pane">
-                        <div id="modal-resources" class="resources-section"></div>
-                    </div>
-                    <div id="salary-tab" class="tab-pane">
-                        <div id="modal-salary" class="salary-section"></div>
-                    </div>
-                </div>
+                <div class="search-results" id="searchResults"></div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Career Paths Section -->
+    <main class="main-content">
+        <section class="careers-section">
+            <div class="section-header">
+                <h2 class="section-title">Explore Career Paths</h2>
+                <p class="section-description">Choose from diverse technology careers with detailed roadmaps and insights</p>
+            </div>
+            
+            <div class="careers-grid" id="careersGrid">
+                <!-- Career cards will be dynamically inserted here -->
+            </div>
+        </section>
+    </main>
+
+    <!-- Career Modal -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="career-modal" id="careerModal">
+            <button class="modal-close" id="modalClose">
+                <i class="fas fa-times"></i>
+            </button>
+            
+            <div class="modal-header" id="modalHeader">
+                <!-- Modal header will be populated dynamically -->
+            </div>
+            
+            <div class="modal-tabs">
+                <button class="tab-btn active" data-tab="overview">Overview</button>
+                <button class="tab-btn" data-tab="roadmap">Roadmap</button>
+                <button class="tab-btn" data-tab="resources">Resources</button>
+                <button class="tab-btn" data-tab="salary">Salary</button>
+            </div>
+            
+            <div class="modal-content" id="modalContent">
+                <!-- Modal content will be populated dynamically -->
             </div>
         </div>
     </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <i class="fas fa-rocket"></i>
+                <span>TechNext</span>
+            </div>
+            <p class="footer-text">
+                Empowering the next generation of tech professionals with curated career guidance and resources.
+            </p>
+            <div class="footer-links">
+                <a href="#" class="footer-link">About</a>
+                <a href="#" class="footer-link">Careers</a>
+                <a href="#" class="footer-link">Contact</a>
+                <a href="#" class="footer-link">Privacy</a>
+            </div>
+        </div>
+    </footer>
 
     <!-- Scripts -->
     <script src="data.js"></script>
